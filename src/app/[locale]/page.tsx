@@ -38,7 +38,7 @@ export default async function HomePage({ params }: Params) {
         <div className="mx-auto flex max-w-[78rem] flex-col items-center text-center">
           <SectionHeader id="who" lines={HOME.who.lines} className="flex flex-col items-center" headingClassName="text-center" />
           <div className="mt-12 w-full">
-            <ScrubText text={HOME.who.paragraphs.join(" ")} className="display mx-auto max-w-[88rem] text-[clamp(1.6rem,3.3vw,3.5rem)] leading-[1.06] text-center" />
+            <ScrubText text={HOME.who.paragraphs.join(" ")} className="display mx-auto max-w-[68rem] text-[clamp(1.6rem,3.3vw,3.5rem)] leading-[1.06] text-center" />
           </div>
           <div className="mt-10" data-reveal style={{ ["--reveal-delay" as string]: "450ms" }}>
             <GhostButton href={HOME.who.cta.href}>{HOME.who.cta.label}</GhostButton>

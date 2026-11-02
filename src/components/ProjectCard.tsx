@@ -65,12 +65,12 @@ export default function ProjectCard({
       </Link>
 
       {/* Category pills — siblings of the card link so each is its own filter link */}
-      <ul className="absolute right-4 top-4 z-10 flex flex-wrap justify-end gap-2 md:right-6 md:top-6 md:gap-2.5" aria-label={ui.common.disciplines}>
+      <ul className="absolute right-4 top-4 z-10 flex flex-wrap justify-end gap-1.5 md:right-6 md:top-6 md:gap-2" aria-label={ui.common.disciplines}>
         {project.disciplines.map((d) => (
           <li key={d}>
             <Link
               href={`/work?filter=${encodeURIComponent(d)}`}
-              className="inline-flex items-center rounded-full bg-black/35 px-4 py-2 text-[0.9rem] font-medium leading-none text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-black md:px-5 md:py-2.5 md:text-[1rem]"
+              className="inline-flex items-center rounded-full bg-black/35 px-2.5 py-1.5 text-[0.58rem] font-medium leading-none text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-black md:px-3 md:py-1.5 md:text-[0.62rem]"
             >
               {ui.disciplines[d] ?? d}
             </Link>

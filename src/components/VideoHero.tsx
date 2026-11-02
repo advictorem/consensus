@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import GhostButton from "./GhostButton";
 import AnimatedHeading from "./AnimatedHeading";
 import ScrollFadeParallax from "./ScrollFadeParallax";
 import { useUI } from "@/i18n/LocaleProvider";
@@ -9,11 +8,11 @@ import { useUI } from "@/i18n/LocaleProvider";
 export default function VideoHero({
   lines,
   copy,
-  primary,
 }: {
   lines: string[];
   copy: string;
-  primary: { label: string; href: string };
+  /** Kept for content compatibility; the hero no longer renders a button. */
+  primary?: { label: string; href: string };
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const ui = useUI();
@@ -88,15 +87,6 @@ export default function VideoHero({
           >
             {copy}
           </p>
-          <div
-            className="flex flex-wrap gap-4"
-            data-reveal
-            style={{ ["--reveal-delay" as string]: "700ms" }}
-          >
-            <GhostButton href={primary.href} size="lg">
-              {primary.label}
-            </GhostButton>
-          </div>
         </ScrollFadeParallax>
       </div>
 
@@ -105,7 +95,10 @@ export default function VideoHero({
         className="scroll-cue absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex"
         aria-hidden="true"
       >
-        <span className="t-label text-white/55">{ui.common.scroll}</span>
+        {/* Type matches the ghost buttons: display face, 300, 0.1em tracking. */}
+        <span className="display text-[1.05rem] font-light uppercase leading-none tracking-[0.1em] text-white/70">
+          {ui.common.scroll}
+        </span>
         <span className="relative block h-12 w-px overflow-hidden bg-white/25">
           <span className="scroll-line absolute inset-x-0 top-0 h-1/2 bg-white" />
         </span>
