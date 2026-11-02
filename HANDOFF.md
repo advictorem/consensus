@@ -7,7 +7,8 @@ _Build date: 2 November 2026 · Branch: `develop`_
 | | |
 |---|---|
 | GitHub repository | https://github.com/advictorem/consensus |
-| Vercel staging (develop) | _pending — see §9_ |
+| **Vercel staging** | **https://consensus-staging.vercel.app** (alias → latest preview deployment) |
+| Vercel project | https://vercel.com/anthony-6763s-projects/consensus |
 | Production | **Not connected.** `consensusinc.com` and the existing site are untouched. |
 
 ## 2. Pages implemented
@@ -97,6 +98,15 @@ Content lives in `src/content/*.ts`; see README → *Adding content*.
 
 ## 8. Deployment
 
+**Current state.** The staging site was deployed from this workspace with the Vercel CLI (`vercel deploy --target preview`) and aliased to `consensus-staging.vercel.app`. Deployment Protection was turned **off** for the project so stakeholders can open the link without a Vercel login (re-enable under Project → Settings → Deployment Protection if you prefer).
+
+**One-time: connect GitHub so pushes auto-deploy.** Install the Vercel GitHub App for `advictorem/consensus` at https://github.com/apps/vercel, then in Vercel → Project `consensus` → Settings → Git → *Connect Git Repository* → choose `advictorem/consensus`, production branch `main`. After that every push to `develop` creates a preview and `main` deploys production. Until then, redeploy manually: `npx vercel deploy --target preview` from the repo (then `npx vercel alias set <deployment-url> consensus-staging.vercel.app`).
+
+**Environment variables set in Vercel** (Preview + Production + Development): `NEXT_PUBLIC_ADOBE_FONTS_KIT`, `CONTACT_TO_EMAIL`; `NEXT_PUBLIC_SITE_URL` (Preview/Development → staging URL; set the production value when a domain is chosen). Still to add: `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`.
+
+**Adobe kit note.** Kit `yrz4xwt` currently serves **Mongoose Bold (700) only**. Navigation, buttons, labels and eyebrows are specified as Mongoose Light (300) and therefore render in Bold until Light (and ideally Regular 400) are added to the web project in Adobe Fonts. No code change needed.
+
+
 - Pushes to `develop` → Vercel preview deployment (staging URL above).
 - Merge `develop` → `main` only for approved releases; `main` is the production branch in Vercel but **no production domain is attached**.
 - Required Vercel environment variables (Preview + Production): `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_ADOBE_FONTS_KIT`, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`.
@@ -107,4 +117,5 @@ Content lives in `src/content/*.ts`; see README → *Adding content*.
 - `tsc --noEmit`, `eslint`, `next build` — clean (34 static routes).
 - Playwright full-page captures at 1440×900 and 390×844 for all templates: no console errors, no page errors, no horizontal overflow.
 - Verified: video playback + poster, header scroll state, mobile menu, accordion, filters, badge rotation, footer wordmark, form validation (client + server), 404.
-- Not yet run: Lighthouse on the deployed URL (do this after the Adobe kit is in place so font loading is measured accurately).
+- Deployed preview verified with a headless browser: Mongoose loads from the Adobe kit (`document.fonts.check` → true), zero console errors, all routes 200, `/en/*` → 308 to root, unknown locale → 404, robots `Disallow: /` on preview.
+- Not yet run: Lighthouse on the deployed URL.
