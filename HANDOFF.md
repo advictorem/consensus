@@ -27,6 +27,14 @@ _Build date: 2 November 2026 · Branch: `develop`_
 | `/api/contact` | Route handler | Validation, honeypot, Resend delivery |
 | `/sitemap.xml`, `/robots.txt`, 404 | | robots disallows indexing on Vercel preview environments |
 
+## 2b. Languages (EN / ES)
+
+- Routing: English at `/…`, Spanish at `/es/…`; `/en/…` redirects to the canonical root URL. Implemented in `src/proxy.ts` + `src/app/[locale]`.
+- Switcher: `EN | ES` in the desktop header, mobile header and mobile menu; keeps the current page.
+- SEO: `<html lang>`, `hreflang` alternates (en / es / x-default) on every page, localized titles/descriptions/OG locale, both locales in `sitemap.xml`, Article JSON-LD carries `inLanguage`.
+- Translations: UI strings in `src/i18n/ui.ts`; content in `src/content/es/*.ts` (home, about, capabilities, projects, sectors, case studies, team, journal, contact form labels, locations). Translated by Claude in neutral Latin American / US Spanish — **recommend a native-speaker review before launch**, especially: "agencia de registro" (agency of record), "grupos de interés" (stakeholders), the Lottery slogan "Tú juegas, las escuelas ganan.", and the contact form label "Su cargo" (Your Title).
+- Not yet translated: image `alt` text on project/sector/capability images (English), client names, and the contact form's server-side field labels in the delivered email (English).
+
 ## 3. Motion & interactions
 
 - **Scroll-rotating badge** (`ScrollRotatingBadge`): fixed bottom-right, 60px mobile / 84px desktop. The circular badge ring rotates **clockwise** from the absolute scroll delta (speed-proportional, eased stop, rAF, transform-only, `mix-blend-mode: difference`), the triangle icon stays fixed in the center. Hidden until the user leaves the top of the page; links to `/contact`; respects reduced motion.
@@ -52,7 +60,7 @@ _Build date: 2 November 2026 · Branch: `develop`_
 
 | Item | Current state | To resolve |
 |---|---|---|
-| **Mongoose font** | Loaded via `NEXT_PUBLIC_ADOBE_FONTS_KIT`; falls back to Oswald when unset | Set the Adobe Fonts kit URL in Vercel env + `.env.local`. Ensure the kit includes Mongoose Light (300) and Bold (700) and lists the staging + production domains. |
+| **Mongoose font** | Adobe kit `https://use.typekit.net/yrz4xwt.css` set in `.env.example` / `.env.local`; falls back to Oswald when unset | Set the same value in Vercel env (Preview + Production). Confirm the kit includes Mongoose Light (300) and Bold (700) and that its allowed domains include the Vercel preview domain and the production domain. The CSS font-family is expected to be `"mongoose"`. |
 | **Client logos** | Typeset names in the display face (`data-placeholder="logo"`) | Drop white SVG/PNGs in `public/images/clients/` and set `src` in `src/content/clients.ts`. The current site hosts 50 colour PNGs at `consensusinc.com/wp-content/uploads/2017/01/…` (list in `/home/claude/research/consensus-research.md`); use official white marks rather than desaturating these. Nike, Live Nation, LA Phil, Hollywood Bowl, California Lottery, LAFC, U.S. Chamber, Goodman and Stemilt are from the brief and not on the current site — confirm permission to display. |
 | **Leadership portraits** | Initials placeholder (`data-placeholder="portrait"`) | Add B&W portraits to `public/images/team/` and set `portrait` in `src/content/team.ts`. |
 | **Project imagery** | Supplied LA photography used as stand-ins for every project thumbnail/hero | Replace with authentic campaign stills (Lottery: pull frames from the Vimeo showcase; Goodman / Hollywood Bowl / Nestlé: from the capabilities deck). Each project lists this under `approvals`. |

@@ -16,6 +16,7 @@ Built with Next.js (App Router), TypeScript, and Tailwind CSS v4. Deployed on Ve
 | Fonts | **Mongoose** via Adobe Fonts web project (display) · Roboto self-hosted (body) |
 | Motion | Native CSS transitions + IntersectionObserver reveals; rAF-driven badge rotation and parallax |
 | Forms | Route handler `/api/contact` → Resend |
+| i18n | English at `/`, Spanish at `/es/…` (proxy rewrite + `[locale]` segment); UI strings in `src/i18n/ui.ts`, content overrides in `src/content/es/` |
 | Hosting | Vercel (`develop` → preview, `main` → production) |
 
 ## Getting started
@@ -42,9 +43,12 @@ Other scripts: `npm run build` · `npm run start` · `npm run lint`.
 
 ```
 src/
+  proxy.ts             Locale routing (/ → en, /es → es, /en → redirect)
+  i18n/                config (locales, localeHref, alternates), ui.ts (UI strings EN/ES), LocaleProvider
   app/                 Routes (App Router)
-    page.tsx           Homepage
-    about/ what-we-do/ work/[slug] sectors/[slug] journal/[slug] contact/
+    [locale]/          layout.tsx (html lang, fonts, header/footer) + all pages
+      page.tsx         Homepage
+      about/ what-we-do/ work/[slug] sectors/[slug] journal/[slug] contact/
     api/contact/       Form backend
     sitemap.ts robots.ts not-found.tsx
     globals.css        Design tokens, type scale, button + reveal systems
@@ -55,6 +59,8 @@ src/
                        CaseStudyTemplate, JournalCard, ContactForm, LocationPanels, SiteFooter)
   content/             Structured content (CMS-ready): home, about, capabilities, projects,
                        case-studies, sectors, team, journal, clients, contact, types
+    index.ts           Locale-aware getters (getProjects(locale), …)
+    es/                Spanish translations (full objects or per-slug overrides)
   lib/                 site config (nav, CTA), formatting helpers
 public/
   brand/               Official SVGs: stacked logo, icon, cursive wordmark, circular badge
@@ -74,6 +80,13 @@ Content is separated from presentation: edit the files in `src/content/` to chan
 - **Article**: add to `ARTICLES` in `src/content/journal.ts`. `status: "draft"` entries are labelled, excluded from the sitemap, and `noindex`.
 - **Client logo**: place a white SVG/PNG in `public/images/clients/` and set `src` on the entry in `src/content/clients.ts`.
 - **Team member**: set `portrait` on the entry in `src/content/team.ts`.
+
+## Languages
+
+- English is canonical and lives at the root (`/about`). Spanish lives under `/es` (`/es/about`). `/en/...` 308-redirects to the root URL.
+- UI strings (nav, buttons, labels, page titles) → `src/i18n/ui.ts`.
+- Content → the EN file in `src/content/*.ts` plus the matching `src/content/es/*.ts` override keyed by slug. Add the EN entry first, then its ES override; untranslated fields fall back to English.
+- Internal links use `@/components/Link`, which prefixes the active locale automatically. Add a locale by extending `LOCALES` in `src/i18n/config.ts`, adding a dictionary in `ui.ts`, and a content override folder.
 
 ## Git workflow
 
