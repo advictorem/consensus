@@ -39,7 +39,7 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
                 onClick={() => setFilter(f)}
                 className="btn btn--sm !gap-0"
                 data-active={active ? "true" : undefined}
-                style={active ? { color: "#000", borderColor: "transparent" } : { borderColor: "rgba(255,255,255,0.3)" }}
+                style={active ? { color: "#000" } : undefined}
               >
                 {f === "All" ? ui.common.all : ui.disciplines[f] ?? f}
               </button>

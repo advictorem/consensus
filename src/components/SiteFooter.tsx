@@ -88,8 +88,6 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
               </li>
             </ul>
             <p className="mt-6 text-sm text-white/50">
-              {ui.common.headquartered}
-              <br />
               {ui.common.serving}
             </p>
           </div>

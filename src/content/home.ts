@@ -8,7 +8,7 @@ export const HOME = {
     lines: ["We are Consensus."],
     paragraphs: [
       "Every brand has a story. Every community has a voice. And every meaningful idea deserves to be heard.",
-      "We work at the intersection of people, purpose, and possibility turning complex challenges into clear narratives, authentic relationships, and communications that move things forward.",
+      "We connect people, purpose, and ideas through powerful storytelling, authentic relationships, and communications that move people forward.",
     ],
     cta: { label: "About Us", href: "/about" },
   },

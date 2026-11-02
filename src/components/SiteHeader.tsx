@@ -65,7 +65,7 @@ export default function SiteHeader() {
               </Link>
             ))}
             <GhostButton href={CTA.href} arrow={false} className="btn--nav ml-2">
-              {ui.nav.cta}
+              {ui.nav.ctaTop}
             </GhostButton>
             <LanguageSwitcher className="ml-3" size="md" />
           </nav>

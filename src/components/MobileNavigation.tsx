@@ -73,7 +73,7 @@ export default function MobileNavigation({
           style={{ transition: "opacity .6s var(--ease-out)", transitionDelay: open ? "480ms" : "0ms", opacity: open ? 1 : 0 }}
         >
           <GhostButton href={CTA.href} size="lg" className="self-start">
-            {ui.nav.cta}
+            {ui.nav.ctaTop}
           </GhostButton>
           <div className="flex items-center justify-between">
             <LanguageSwitcher size="lg" />

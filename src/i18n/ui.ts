@@ -2,7 +2,7 @@ import type { Locale } from "./config";
 
 /** UI strings (navigation, labels, buttons, section headers not stored in content). */
 const en = {
-  nav: { home: "Home", about: "About", whatWeDo: "What We Do", work: "Work", sectors: "Sectors", journal: "Insights", contact: "Contact", careers: "Careers", cta: "Let's Talk" },
+  nav: { home: "Home", about: "Who We Are", whatWeDo: "Services", work: "What We Do", sectors: "Sectors", journal: "Insights", contact: "Contact", careers: "Careers", cta: "Let's Talk", ctaTop: "Get In Touch" },
   a11y: { skip: "Skip to content", openMenu: "Open menu", closeMenu: "Close menu", primaryNav: "Primary", mobileNav: "Mobile", footerNav: "Footer", home: "Consensus — home", language: "Language", switchTo: "Switch to Español" },
   common: {
     ourStory: "Our story",
@@ -82,9 +82,9 @@ const en = {
     pillar: "Pillar",
     byTheNumbers: "By the numbers",
     leadership: "Leadership",
-    aboutEyebrow: "About Consensus",
-    whatWeDoEyebrow: "What we do",
-    ourWork: "Our work",
+    aboutEyebrow: "Who we are",
+    whatWeDoEyebrow: "Services",
+    ourWork: "What we do",
     sectorsEyebrow: "Sectors",
     journalEyebrow: "Insights",
     contactEyebrow: "Contact",
@@ -124,9 +124,9 @@ const en = {
   } as Record<string, string>,
   pages: {
     home: { title: "Consensus — Meaningful Connections. Measurable Impact.", description: "Consensus is an independent public relations, strategic communications, community engagement, marketing, and creative agency headquartered in Southern California. Four decades of experience. New perspectives on what's next." },
-    about: { title: "About", description: "Since 1986, Consensus has helped organizations navigate change, earn trust, and inspire action. Four decades of experience. One belief in the power of people." },
-    whatWeDo: { title: "What We Do", description: "Strategy, public relations, creative, digital, community engagement, and campaigns—connected thinking for communications that resonate and deliver results.", h1: ["We make", "connections count."], intro: "Complex challenges need connected thinking. We combine strategy, storytelling, technology, and real-world engagement to create communications that resonate and deliver results." },
-    work: { title: "Work", description: "Selected campaigns, creative, community engagement, and strategic communications from Consensus.", h1: ["Work that", "moves people."], intro: "Campaigns, creative, and communications programs built on insight—and measured by what they change." },
+    about: { title: "Who We Are", description: "Since 1986, Consensus has helped organizations navigate change, earn trust, and inspire action. Four decades of experience. One belief in the power of people." },
+    whatWeDo: { title: "Services", description: "Strategy, public relations, creative, digital, community engagement, and campaigns—connected thinking for communications that resonate and deliver results.", h1: ["We make", "connections count."], intro: "Complex challenges need connected thinking. We combine strategy, storytelling, technology, and real-world engagement to create communications that resonate and deliver results." },
+    work: { title: "What We Do", description: "Selected campaigns, creative, community engagement, and strategic communications from Consensus.", h1: ["Work that", "moves people."], intro: "Campaigns, creative, and communications programs built on insight—and measured by what they change." },
     sectors: { title: "Sectors", description: "Public affairs, infrastructure, real estate, consumer and corporate brands, culture, education, and environment—complex challenges, clear thinking.", h1: ["Complex challenges.", "Clear thinking."], intro: "Every industry has its own challenges, stakeholders, and conversations. We bring the experience to understand what's at stake—and the strategy and creativity to move things forward." },
     journal: { title: "Insights", description: "Fresh perspectives on communication, culture, creativity, technology, and the ideas shaping what's next.", h1: ["What's on", "our mind."], intro: "Fresh perspectives on communication, culture, creativity, technology, and the ideas shaping what's next." },
     contact: { title: "Contact", description: "Have a challenge, an idea, or a conversation worth starting? We'd love to hear it.", h1: ["Let's make", "something matter."], intro: "Have a challenge, an idea, or a conversation worth starting? We'd love to hear it." },
@@ -136,7 +136,7 @@ const en = {
 export type UI = typeof en;
 
 const es: UI = {
-  nav: { home: "Inicio", about: "Nosotros", whatWeDo: "Qué hacemos", work: "Trabajo", sectors: "Sectores", journal: "Insights", contact: "Contacto", careers: "Carreras", cta: "Hablemos" },
+  nav: { home: "Inicio", about: "Quiénes somos", whatWeDo: "Servicios", work: "Qué hacemos", sectors: "Sectores", journal: "Insights", contact: "Contacto", careers: "Carreras", cta: "Hablemos", ctaTop: "Contáctanos" },
   a11y: { skip: "Ir al contenido", openMenu: "Abrir menú", closeMenu: "Cerrar menú", primaryNav: "Principal", mobileNav: "Móvil", footerNav: "Pie de página", home: "Consensus — inicio", language: "Idioma", switchTo: "Switch to English" },
   common: {
     ourStory: "Nuestra historia",
@@ -216,9 +216,9 @@ const es: UI = {
     pillar: "Pilar",
     byTheNumbers: "En cifras",
     leadership: "Liderazgo",
-    aboutEyebrow: "Sobre Consensus",
-    whatWeDoEyebrow: "Qué hacemos",
-    ourWork: "Nuestro trabajo",
+    aboutEyebrow: "Quiénes somos",
+    whatWeDoEyebrow: "Servicios",
+    ourWork: "Qué hacemos",
     sectorsEyebrow: "Sectores",
     journalEyebrow: "Insights",
     contactEyebrow: "Contacto",
@@ -258,9 +258,9 @@ const es: UI = {
   },
   pages: {
     home: { title: "Consensus — Conexiones significativas. Impacto medible.", description: "Consensus es una agencia independiente de relaciones públicas, comunicación estratégica, participación comunitaria, marketing y creatividad con sede en el sur de California. Cuatro décadas de experiencia. Nuevas perspectivas sobre lo que viene." },
-    about: { title: "Nosotros", description: "Desde 1986, Consensus ayuda a las organizaciones a navegar el cambio, ganarse la confianza e inspirar la acción. Cuatro décadas de experiencia. Una convicción: el poder de las personas." },
-    whatWeDo: { title: "Qué hacemos", description: "Estrategia, relaciones públicas, creatividad, digital, participación comunitaria y campañas: pensamiento conectado para comunicaciones que resuenan y dan resultados.", h1: ["Hacemos que las", "conexiones cuenten."], intro: "Los retos complejos exigen pensamiento conectado. Combinamos estrategia, narrativa, tecnología y participación real para crear comunicaciones que resuenan y dan resultados." },
-    work: { title: "Trabajo", description: "Campañas, creatividad, participación comunitaria y comunicación estratégica seleccionadas de Consensus.", h1: ["Trabajo que", "mueve a las personas."], intro: "Campañas, creatividad y programas de comunicación construidos sobre insights y medidos por lo que cambian." },
+    about: { title: "Quiénes somos", description: "Desde 1986, Consensus ayuda a las organizaciones a navegar el cambio, ganarse la confianza e inspirar la acción. Cuatro décadas de experiencia. Una convicción: el poder de las personas." },
+    whatWeDo: { title: "Servicios", description: "Estrategia, relaciones públicas, creatividad, digital, participación comunitaria y campañas: pensamiento conectado para comunicaciones que resuenan y dan resultados.", h1: ["Hacemos que las", "conexiones cuenten."], intro: "Los retos complejos exigen pensamiento conectado. Combinamos estrategia, narrativa, tecnología y participación real para crear comunicaciones que resuenan y dan resultados." },
+    work: { title: "Qué hacemos", description: "Campañas, creatividad, participación comunitaria y comunicación estratégica seleccionadas de Consensus.", h1: ["Trabajo que", "mueve a las personas."], intro: "Campañas, creatividad y programas de comunicación construidos sobre insights y medidos por lo que cambian." },
     sectors: { title: "Sectores", description: "Asuntos públicos, infraestructura, bienes raíces, marcas de consumo y corporativas, cultura, educación y medio ambiente: retos complejos, pensamiento claro.", h1: ["Retos complejos.", "Pensamiento claro."], intro: "Cada industria tiene sus propios retos, actores y conversaciones. Aportamos la experiencia para entender lo que está en juego, y la estrategia y creatividad para hacer avanzar las cosas." },
     journal: { title: "Insights", description: "Perspectivas frescas sobre comunicación, cultura, creatividad, tecnología y las ideas que definen lo que viene.", h1: ["Lo que tenemos", "en mente."], intro: "Perspectivas frescas sobre comunicación, cultura, creatividad, tecnología y las ideas que definen lo que viene." },
     contact: { title: "Contacto", description: "¿Tienes un reto, una idea o una conversación que vale la pena iniciar? Nos encantaría escucharla.", h1: ["Hagamos algo", "que importe."], intro: "¿Tienes un reto, una idea o una conversación que vale la pena iniciar? Nos encantaría escucharla." },

@@ -210,7 +210,7 @@ strong, b { font-weight: 700; }
   gap: 0.85rem;
   padding: var(--btn-pad-y) var(--btn-pad-x);
   min-height: 3.25rem;
-  border: 1px solid var(--white);
+  border: 1px solid transparent; /* reserves the ring drawn by ::after */
   border-radius: 999px;
   background: transparent;
   color: var(--white);
@@ -223,8 +223,25 @@ strong, b { font-weight: 700; }
   white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
-  overflow: hidden;
   transition: border-color 0.5s var(--ease-out), color 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  /* Must sit above the button's own box: a masked pseudo at a negative
+     z-index is not painted, so the ring would vanish. It's a 1px outline
+     and pointer-transparent, so it never gets in the content's way. */
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--brand-gradient);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 .btn::before {
   content: "";
@@ -235,6 +252,7 @@ strong, b { font-weight: 700; }
   background: var(--brand-gradient);
   background-size: 220% 100%;
   background-position: 0% 50%;
+  overflow: hidden;
   opacity: 0;
   transform: translateX(-12%) scaleX(0.92);
   transition: opacity 0.45s var(--ease-out), transform 0.6s var(--ease-out), background-position 1.4s var(--ease-in-out);
@@ -246,7 +264,7 @@ strong, b { font-weight: 700; }
   transform: none;
   background-position: 100% 50%;
 }
-.btn:hover, .btn:focus-visible { border-color: transparent; color: var(--black); }
+.btn:hover, .btn:focus-visible { color: var(--black); }
 .btn:active { transform: scale(0.98); }
 .btn .btn-arrow {
   width: 1.05em;

@@ -19,15 +19,15 @@ export type NavItem = { key: NavKey; href: string; external?: boolean };
 export const NAV: NavItem[] = [
   { key: "home", href: "/" },
   { key: "about", href: "/about" },
-  { key: "whatWeDo", href: "/what-we-do" },
   { key: "work", href: "/work" },
+  { key: "whatWeDo", href: "/what-we-do" },
   { key: "sectors", href: "/sectors" },
 ];
 
 export const FOOTER_NAV: NavItem[] = [
   { key: "about", href: "/about" },
-  { key: "whatWeDo", href: "/what-we-do" },
   { key: "work", href: "/work" },
+  { key: "whatWeDo", href: "/what-we-do" },
   { key: "sectors", href: "/sectors" },
   { key: "journal", href: "/insights" },
   { key: "contact", href: "/contact" },
