@@ -24,12 +24,9 @@ export const HOME = {
     cta: { label: "Explore our capabilities", href: "/what-we-do" },
   },
   clients: {
-    eyebrow: "In good company",
-    lines: ["Who we", "work with."],
-    copy: "From global brands to public institutions, we've partnered with organizations shaping the places we live, the products we use, and the conversations that move our world forward.",
+    label: "Who we work with", // screen-reader label only
   },
   difference: {
-    eyebrow: "Why Consensus",
     lines: ["Built for", "what's next."],
     copy: "Experience gives us perspective. Curiosity keeps us moving. We bring seasoned strategic thinking together with diverse creative talent, intelligent technology, and a shared belief that the strongest ideas start with understanding people.",
     points: [
@@ -38,7 +35,7 @@ export const HOME = {
       { k: "Perspective", v: "Diverse backgrounds, disciplines, and ways of seeing the world." },
       { k: "Fluency", v: "Technologically fluent, unmistakably human." },
     ],
-    cta: { label: "Discover our story", href: "/about" },
+    cta: { label: "How we work", href: "/what-we-do" },
   },
   journal: {
     eyebrow: "The Journal",

@@ -72,14 +72,14 @@ export default function ScrollRotatingBadge() {
       <Link
         href="/contact"
         tabIndex={-1}
-        className="pointer-events-auto relative block h-[60px] w-[60px] md:h-[84px] md:w-[84px]"
+        className="pointer-events-auto relative block h-[78px] w-[78px] md:h-[110px] md:w-[110px]"
       >
         <div
           ref={ringRef}
           className="absolute inset-0 will-change-transform"
           style={{ mixBlendMode: "difference" }}
         >
-          <Image src="/brand/consensus-badge.svg" alt="" width={84} height={84} className="h-full w-full" />
+          <Image src="/brand/consensus-badge.svg" alt="" width={110} height={110} className="h-full w-full" />
         </div>
         <Image
           src="/brand/consensus-icon.svg"

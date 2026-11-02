@@ -26,12 +26,9 @@ export const HOME_ES: typeof HOME = {
     cta: { label: "Explore nuestras capacidades", href: "/what-we-do" },
   },
   clients: {
-    eyebrow: "En buena compañía",
-    lines: ["Con quiénes", "trabajamos."],
-    copy: "Desde marcas globales hasta instituciones públicas, hemos colaborado con organizaciones que dan forma a los lugares donde vivimos, los productos que usamos y las conversaciones que hacen avanzar a nuestro mundo.",
+    label: "Con quiénes trabajamos",
   },
   difference: {
-    eyebrow: "Por qué Consensus",
     lines: ["Hechos para", "lo que sigue."],
     copy: "La experiencia nos da perspectiva. La curiosidad nos mantiene en movimiento. Unimos un pensamiento estratégico experimentado con talento creativo diverso, tecnología inteligente y la convicción compartida de que las ideas más fuertes nacen de entender a las personas.",
     points: [
@@ -40,7 +37,7 @@ export const HOME_ES: typeof HOME = {
       { k: "Perspectiva", v: "Trayectorias, disciplinas y formas de ver el mundo diversas." },
       { k: "Fluidez", v: "Tecnológicamente fluidos, inconfundiblemente humanos." },
     ],
-    cta: { label: "Descubra nuestra historia", href: "/about" },
+    cta: { label: "Cómo trabajamos", href: "/what-we-do" },
   },
   journal: {
     eyebrow: "El Journal",

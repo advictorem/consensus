@@ -18,9 +18,9 @@ export default function ClientLogoGrid({ logos, locale }: { logos: ClientLogo[];
       {logos.map((l, i) => (
         <li
           key={l.name}
-          className="flex h-20 items-center justify-center opacity-85 transition-[opacity,transform] duration-500 hover:scale-[1.04] hover:opacity-100 md:h-24"
+          className="logo-cell flex h-10 items-center justify-center md:h-12"
           data-reveal
-          style={{ ["--reveal-delay" as string]: `${(i % 4) * 70}ms` }}
+          style={{ ["--reveal-delay" as string]: `${i * 110}ms` }}
         >
           {l.src ? (
             <Image
@@ -29,7 +29,7 @@ export default function ClientLogoGrid({ logos, locale }: { logos: ClientLogo[];
               width={l.width ?? 160}
               height={l.height ?? 64}
               className="h-full w-full object-contain"
-              style={{ maxHeight: "100%", maxWidth: "70%" }}
+              style={{ maxHeight: "100%", maxWidth: "60%" }}
               unoptimized
             />
           ) : (

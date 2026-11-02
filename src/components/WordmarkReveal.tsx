@@ -11,9 +11,8 @@ const DOT = "M166.77,99.91l-.47.64s.09.14.24.34c.08-.33.15-.65.23-.99";
 
 /**
  * Cursive "Consensus" wordmark that writes itself in as it scrolls into view.
- * Technique (after laurenhansen's handwriting pen): the outline is traced with
- * a stroke-dash animation while a clip rectangle sweeps left→right revealing
- * the solid fill, so the letters appear to be inked in order.
+ * A clip rectangle sweeps left→right revealing the solid white fill, so the
+ * letters appear to be inked in order (outline pass removed by request).
  * Respects prefers-reduced-motion (renders static).
  */
 export default function WordmarkReveal() {
@@ -36,20 +35,16 @@ export default function WordmarkReveal() {
       return;
     }
 
-    const len = stroke.getTotalLength();
-    gsap.set(stroke, { strokeDasharray: len, strokeDashoffset: len, opacity: 1 });
-    gsap.set(dotStroke, { opacity: 0 });
+    gsap.set([stroke, dotStroke], { opacity: 0 });
     gsap.set(clip, { attr: { width: 0 } });
     gsap.set(fills, { opacity: 1 });
 
+    // Fill sweeps in left→right as if inked; no outline pass.
     const tl = gsap.timeline({
       scrollTrigger: { trigger: svg, start: "top 85%", once: true },
       defaults: { ease: "power1.inOut" },
     });
-    tl.to(stroke, { strokeDashoffset: 0, duration: 2.6 }, 0)
-      .to(clip, { attr: { width: 1300 }, duration: 2.6 }, 0.15)
-      .to(dotStroke, { opacity: 1, duration: 0.3 }, 2.5)
-      .to(stroke, { opacity: 0, duration: 0.6 }, 2.7);
+    tl.to(clip, { attr: { width: 1300 }, duration: 2.4 }, 0);
 
     return () => {
       tl.scrollTrigger?.kill();

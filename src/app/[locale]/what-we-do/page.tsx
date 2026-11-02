@@ -64,12 +64,9 @@ export default async function WhatWeDoPage({ params }: Params) {
                 <p className="t-lead mt-8 max-w-[44ch] text-white/85" data-reveal>
                   {c.description}
                 </p>
-                <ul className="mt-10 grid gap-x-8 gap-y-3 sm:grid-cols-2" aria-label={`${c.title} — ${ui.common.services}`}>
-                  {c.services.map((s, j) => (
-                    <li key={s} className="flex items-baseline gap-3 border-t border-white/10 pt-3 text-[0.95rem] text-white/75" data-reveal style={{ ["--reveal-delay" as string]: `${j * 50}ms` }}>
-                      <span className="gradient-text t-label !text-[0.6rem]">{String(j + 1).padStart(2, "0")}</span>
-                      {s}
-                    </li>
+                <ul className="mt-10 list-disc space-y-2 pl-5 text-[1.05rem] font-bold text-white/90 marker:text-white/40" aria-label={`${c.title} — ${ui.common.services}`} data-reveal>
+                  {c.services.map((s) => (
+                    <li key={s}>{s}</li>
                   ))}
                 </ul>
                 {related.length > 0 && (

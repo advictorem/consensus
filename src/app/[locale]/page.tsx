@@ -23,7 +23,6 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 export default async function HomePage({ params }: Params) {
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : "en";
-  const ui = getUI(locale);
   const HOME = getHome(locale);
   const capabilities = getCapabilities(locale);
   const featured = getFeaturedProjects(locale, 5);
@@ -73,15 +72,7 @@ export default async function HomePage({ params }: Params) {
       </section>
 
       {/* 05 — Clients */}
-      <section className="container-x section-y border-t border-white/10" aria-labelledby="clients">
-        <div className="mb-20 grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <SectionHeader id="clients" eyebrow={HOME.clients.eyebrow} lines={HOME.clients.lines} />
-          </div>
-          <p className="t-body self-end text-white/75 lg:col-span-4 lg:col-start-9" data-reveal>
-            {HOME.clients.copy}
-          </p>
-        </div>
+      <section className="container-x section-y border-t border-white/10" aria-label={HOME.clients.label}>
         <ClientLogoGrid logos={CLIENT_LOGOS} locale={locale} />
       </section>
 
@@ -95,7 +86,10 @@ export default async function HomePage({ params }: Params) {
         <div className="container-x section-y">
           <div className="grid gap-14 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-6">
-              <SectionHeader id="difference" eyebrow={HOME.difference.eyebrow} lines={HOME.difference.lines} copy={HOME.difference.copy} />
+              <SectionHeader id="difference" lines={HOME.difference.lines} />
+              <p className="mt-8 max-w-[52ch] text-[0.95rem] leading-relaxed text-white/75" data-reveal>
+                {HOME.difference.copy}
+              </p>
               <div className="mt-10" data-reveal>
                 <GhostButton href={HOME.difference.cta.href}>{HOME.difference.cta.label}</GhostButton>
               </div>

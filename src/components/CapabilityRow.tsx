@@ -3,14 +3,11 @@
 import Link from "@/components/Link";
 import { useState } from "react";
 import type { Capability } from "@/content/types";
-import { Arrow } from "./GhostButton";
-import { useUI } from "@/i18n/LocaleProvider";
 
 /**
  * Numbered editorial rows (accordion). One open at a time; keyboard accessible.
  */
 export default function CapabilityRows({ items }: { items: Capability[] }) {
-  const ui = useUI();
   const [open, setOpen] = useState<string | null>(items[0]?.slug ?? null);
 
   return (
@@ -25,9 +22,8 @@ export default function CapabilityRows({ items }: { items: Capability[] }) {
               aria-expanded={isOpen}
               aria-controls={panelId}
               onClick={() => setOpen(isOpen ? null : c.slug)}
-              className="group grid w-full grid-cols-[auto_1fr_auto] items-baseline gap-x-5 py-7 text-left md:grid-cols-[6rem_1fr_auto] md:gap-x-8 md:py-9"
+              className="group grid w-full grid-cols-[1fr_auto] items-baseline gap-x-5 py-7 text-left md:gap-x-8 md:py-9"
             >
-              <span className="t-label text-white/45 transition-colors group-hover:text-white">{c.number}</span>
               <span className="display t-h3 leading-[0.95] transition-colors duration-300 group-hover:gradient-text">
                 {c.title}
               </span>
@@ -50,24 +46,19 @@ export default function CapabilityRows({ items }: { items: Capability[] }) {
               aria-hidden={!isOpen}
             >
               <div className="overflow-hidden">
-                <div className="grid gap-8 pb-10 md:grid-cols-[6rem_1fr_auto] md:gap-x-8 md:pb-12">
-                  <span className="hidden md:block" />
-                  <div className="max-w-3xl">
-                    <p className="t-body text-white/80">{c.short}</p>
-                    <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-                      {c.services.slice(0, 5).map((s) => (
-                        <li key={s} className="t-label !text-[0.72rem] text-white/50">
-                          {s}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className="grid gap-8 pb-10 md:grid-cols-12 md:gap-x-8 md:pb-12">
+                  <p className="t-body text-white/80 md:col-span-6">{c.short}</p>
+                  <ul className="list-disc space-y-1.5 pl-5 text-[1rem] font-bold text-white/90 marker:text-white/40 md:col-span-5 md:col-start-8">
+                    {c.services.map((s) => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </ul>
                   <Link
                     href={`/what-we-do#${c.slug}`}
                     tabIndex={isOpen ? 0 : -1}
-                    className="link-line t-label inline-flex items-center gap-2 self-start text-white/80 hover:text-white md:justify-self-end"
+                    className="display gradient-fill-hover t-h3 !text-[1.4rem] md:col-span-12"
                   >
-                    {ui.common.learnMore} <Arrow className="!h-4 !w-4" />
+                    {c.title} →
                   </Link>
                 </div>
               </div>
