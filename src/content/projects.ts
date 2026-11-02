@@ -113,6 +113,7 @@ export const PROJECTS: Project[] = [
     tags: ["Integrated Campaign", "Public Awareness", "Transit", "Creative Storytelling"],
     featured: true,
     featuredOrder: 6,
+    size: "sm",
     hero: {
       src: "/images/work/metro-world-cup.jpg",
       alt: "Fans in national team jerseys and an American flag riding a Metro bus in Los Angeles",

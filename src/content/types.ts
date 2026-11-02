@@ -35,7 +35,7 @@ export type Project = {
   tags: string[];
   featured?: boolean;
   featuredOrder?: number;
-  size?: "xl" | "lg" | "md";
+  size?: "xl" | "lg" | "md" | "sm";
   hero: Media;
   thumb: Media;
   intro: string;

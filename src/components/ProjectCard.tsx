@@ -14,6 +14,7 @@ export default function ProjectCard({
   priority = false,
   className = "",
   delay = 0,
+  compact = false,
 }: {
   locale: Locale;
   project: Project;
@@ -25,6 +26,8 @@ export default function ProjectCard({
   className?: string;
   /** Stagger for the reveal animation, in ms. */
   delay?: number;
+  /** Half-scale tile: smaller caption type and pills, title free to wrap. */
+  compact?: boolean;
 }) {
   const ui = getUI(locale);
   return (
@@ -49,28 +52,47 @@ export default function ProjectCard({
             <Arrow className="!h-4 !w-4" />
           </span>
         </div>
-        <div className="mt-6 flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-8">
+        <div className={`flex flex-col gap-2 md:flex-row md:items-start md:justify-between ${compact ? "mt-4 md:gap-5" : "mt-6 md:gap-8"}`}>
           <div>
-            <h3 className="display text-[clamp(1.7rem,2.8vw,2.8rem)] leading-[0.95] [text-wrap:balance] md:whitespace-nowrap">
+            <h3
+              className={
+                compact
+                  ? "display text-[clamp(1.15rem,1.5vw,1.5rem)] leading-[0.98] [text-wrap:balance]"
+                  : "display text-[clamp(1.7rem,2.8vw,2.8rem)] leading-[0.95] [text-wrap:balance] md:whitespace-nowrap"
+              }
+            >
               {project.title.split("\n").map((t, i) => (
                 <span key={i} className="block">
                   {t}
                 </span>
               ))}
             </h3>
-            <p className="mt-3 max-w-[48ch] text-[0.95rem] text-white/65">{project.descriptor}</p>
+            <p className={`max-w-[48ch] text-white/65 ${compact ? "mt-2 text-[0.8rem]" : "mt-3 text-[0.95rem]"}`}>{project.descriptor}</p>
           </div>
-          <p className="t-sub shrink-0 text-[1.05rem] leading-tight text-[#3cc1ef] md:pt-1 md:text-right md:text-[1.15rem]">{project.client}</p>
+          <p
+            className={`t-sub shrink-0 leading-tight text-[#3cc1ef] md:pt-1 md:text-right ${
+              compact ? "text-[0.8rem] md:text-[0.85rem]" : "text-[1.05rem] md:text-[1.15rem]"
+            }`}
+          >
+            {project.client}
+          </p>
         </div>
       </Link>
 
       {/* Category pills — siblings of the card link so each is its own filter link */}
-      <ul className="absolute right-4 top-4 z-10 flex flex-wrap justify-end gap-1.5 md:right-6 md:top-6 md:gap-2" aria-label={ui.common.disciplines}>
+      <ul
+        className={`absolute z-10 flex flex-wrap justify-end gap-1.5 ${compact ? "right-3 top-3 md:right-4 md:top-4 md:gap-1.5" : "right-4 top-4 md:right-6 md:top-6 md:gap-2"}`}
+        aria-label={ui.common.disciplines}
+      >
         {project.disciplines.map((d) => (
           <li key={d}>
             <Link
               href={`/work?filter=${encodeURIComponent(d)}`}
-              className="inline-flex items-center rounded-full bg-black/35 px-2.5 py-1.5 text-[0.58rem] font-medium leading-none text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-black md:px-3 md:py-1.5 md:text-[0.62rem]"
+              className={`inline-flex items-center rounded-full bg-black/35 font-medium leading-none text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-black ${
+                compact
+                  ? "px-2 py-1 text-[0.48rem] md:px-2.5 md:py-1 md:text-[0.52rem]"
+                  : "px-2.5 py-1.5 text-[0.58rem] md:px-3 md:py-1.5 md:text-[0.62rem]"
+              }`}
             >
               {ui.disciplines[d] ?? d}
             </Link>

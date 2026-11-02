@@ -44,6 +44,20 @@ export default function FeaturedWorkGrid({
 
       <div className="mt-16 grid gap-x-10 gap-y-16 md:mt-24 md:grid-cols-12 md:gap-y-24">
         {rest.map((p, i) => {
+          // "sm" tiles opt out of the 7/5 rhythm and run at roughly half scale.
+          if (p.size === "sm") {
+            return (
+              <ProjectCard
+                locale={locale}
+                key={p.slug}
+                project={p}
+                compact
+                aspect="aspect-[4/3]"
+                sizes="(min-width: 768px) 30vw, 100vw"
+                className="md:col-span-4"
+              />
+            );
+          }
           const even = i % 2 === 0;
           return (
             <ProjectCard
