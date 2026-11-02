@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { CONTACT, CONTACT_FORM_FIELDS } from "@/content/contact";
+import { getUI } from "@/i18n/ui";
+import { isLocale } from "@/i18n/config";
 
 /**
  * Contact form backend.
@@ -19,6 +21,9 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ ok: false, message: "Invalid request." }, { status: 400 });
   }
+
+  const locale = isLocale(String(body._locale)) ? (String(body._locale) as "en" | "es") : "en";
+  const ui = getUI(locale);
 
   // Honeypot
   if (typeof body._hp === "string" && body._hp.trim() !== "") {
@@ -47,7 +52,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         ok: false,
-        message: `The contact form isn't connected to a mail service yet. Please email us directly at ${CONTACT.email}.`,
+        message: `${ui.common.unavailable} ${CONTACT.email}.`,
       },
       { status: 503 },
     );
@@ -73,10 +78,10 @@ export async function POST(req: Request) {
     const detail = await res.text().catch(() => "");
     console.error("[contact] Resend error", res.status, detail);
     return NextResponse.json(
-      { ok: false, message: `We couldn't send your message right now. Please email ${CONTACT.email}.` },
+      { ok: false, message: `${ui.common.genericError} ${ui.common.preferEmail} ${CONTACT.email}` },
       { status: 502 },
     );
   }
 
-  return NextResponse.json({ ok: true, message: "Thanks—your message is on its way. We'll be in touch soon." });
+  return NextResponse.json({ ok: true, message: ui.common.thanks });
 }

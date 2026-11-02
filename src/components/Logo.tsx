@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 
 /**
  * Official stacked Consensus logo (triangle icon + cursive wordmark).

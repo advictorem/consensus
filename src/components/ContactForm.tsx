@@ -2,11 +2,16 @@
 
 import { useState, type FormEvent } from "react";
 import GhostButton from "./GhostButton";
-import { CONTACT_FORM_FIELDS, CONTACT } from "@/content/contact";
+import { CONTACT } from "@/content/contact";
+import { getContactFormFields } from "@/content";
+import { useLocale, useUI } from "@/i18n/LocaleProvider";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm() {
+  const locale = useLocale();
+  const ui = useUI();
+  const CONTACT_FORM_FIELDS = getContactFormFields(locale);
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -16,8 +21,8 @@ export default function ContactForm() {
     for (const f of CONTACT_FORM_FIELDS) {
       if (f.type === "checkbox-group") continue;
       const v = String(fd.get(f.name) ?? "").trim();
-      if (f.required && !v) next[f.name] = "This field is required.";
-      if (f.type === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) next[f.name] = "Please enter a valid email address.";
+      if (f.required && !v) next[f.name] = ui.common.fieldRequired;
+      if (f.type === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) next[f.name] = ui.common.emailInvalid;
     }
     return next;
   }
@@ -41,26 +46,27 @@ export default function ContactForm() {
         else payload[f.name] = fd.get(f.name);
       }
       payload["_hp"] = fd.get("website") ?? ""; // honeypot
+      payload["_locale"] = locale;
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
       const data = (await res.json()) as { ok: boolean; message?: string };
-      if (!res.ok || !data.ok) throw new Error(data.message || "Something went wrong.");
+      if (!res.ok || !data.ok) throw new Error(data.message || ui.common.genericError);
       setStatus("success");
-      setMessage(data.message || "Thanks—your message is on its way. We'll be in touch soon.");
+      setMessage(data.message || ui.common.thanks);
       form.reset();
     } catch (err) {
       setStatus("error");
-      setMessage(err instanceof Error ? err.message : "Something went wrong.");
+      setMessage(err instanceof Error ? err.message : ui.common.genericError);
     }
   }
 
   if (status === "success") {
     return (
       <div role="status" className="border-t border-white/12 py-12" data-reveal>
-        <p className="display t-h3 gradient-text">Message received.</p>
+        <p className="display t-h3 gradient-text">{ui.common.messageReceived}</p>
         <p className="mt-4 max-w-[48ch] text-white/75">{message}</p>
       </div>
     );
@@ -106,7 +112,7 @@ export default function ContactForm() {
             ) : f.type === "select" ? (
               <select id={id} name={f.name} required={f.required} aria-invalid={err ? "true" : undefined} defaultValue="">
                 <option value="" disabled>
-                  Select…
+                  {ui.common.selectPlaceholder}
                 </option>
                 {f.options?.map((o) => (
                   <option key={o} value={o}>
@@ -143,10 +149,10 @@ export default function ContactForm() {
 
       <div className="flex flex-col gap-6 md:col-span-2 md:flex-row md:items-center md:justify-between">
         <GhostButton type="submit" size="lg" disabled={status === "submitting"}>
-          {status === "submitting" ? "Sending…" : "Send message"}
+          {status === "submitting" ? ui.common.sending : ui.common.sendMessage}
         </GhostButton>
         <p className="text-xs text-white/45">
-          <span aria-hidden="true" className="text-pink">* </span>Required. Prefer email?{" "}
+          <span aria-hidden="true" className="text-pink">* </span>{ui.common.required}. {ui.common.preferEmail}{" "}
           <a className="link-line text-white/70" href={`mailto:${CONTACT.email}`}>
             {CONTACT.email}
           </a>

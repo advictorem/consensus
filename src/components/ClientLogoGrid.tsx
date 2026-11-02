@@ -1,16 +1,19 @@
 import Image from "next/image";
 import type { ClientLogo } from "@/content/types";
+import type { Locale } from "@/i18n/config";
+import { getUI } from "@/i18n/ui";
 
 /**
  * Flat white marks on black. Logos without a sourced white asset render as a
  * type-set name in the display face (clearly a placeholder; see HANDOFF.md).
  */
-export default function ClientLogoGrid({ logos }: { logos: ClientLogo[] }) {
+export default function ClientLogoGrid({ logos, locale }: { logos: ClientLogo[]; locale: Locale }) {
+  const ui = getUI(locale);
   return (
     <ul
       className="grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 lg:gap-x-10 lg:gap-y-16"
       role="list"
-      aria-label="Selected clients"
+      aria-label={ui.common.selectedClients}
     >
       {logos.map((l, i) => (
         <li
@@ -30,7 +33,7 @@ export default function ClientLogoGrid({ logos }: { logos: ClientLogo[] }) {
           ) : (
             <span
               className="display-light text-center text-[0.95rem] leading-tight text-white/85 md:text-[1.05rem]"
-              title={`${l.name} — official white logo pending`}
+              title={`${l.name} — ${ui.common.logoPending}`}
               data-placeholder="logo"
             >
               {l.name}

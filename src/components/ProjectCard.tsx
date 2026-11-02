@@ -1,9 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import type { Project } from "@/content/types";
 import { Arrow } from "./GhostButton";
+import type { Locale } from "@/i18n/config";
+import { getUI } from "@/i18n/ui";
 
 export default function ProjectCard({
+  locale,
   project,
   index,
   aspect = "aspect-[4/3]",
@@ -11,6 +14,7 @@ export default function ProjectCard({
   priority = false,
   className = "",
 }: {
+  locale: Locale;
   project: Project;
   index?: number;
   aspect?: string;
@@ -18,9 +22,10 @@ export default function ProjectCard({
   priority?: boolean;
   className?: string;
 }) {
+  const ui = getUI(locale);
   return (
     <article className={`group ${className}`} data-reveal>
-      <Link href={`/work/${project.slug}`} className="block" aria-label={`${project.client}: ${project.title} — view project`}>
+      <Link href={`/work/${project.slug}`} className="block" aria-label={`${project.client}: ${project.title.replace("\n", " ")} — ${ui.common.viewProject}`}>
         <div className={`media-zoom relative overflow-hidden bg-near-black ${aspect}`}>
           <Image
             src={project.thumb.src}
@@ -49,10 +54,10 @@ export default function ProjectCard({
             </h3>
             <p className="mt-3 max-w-[48ch] text-[0.95rem] text-white/65">{project.descriptor}</p>
           </div>
-          <ul className="hidden shrink-0 flex-col items-end gap-1 text-right md:flex" aria-label="Disciplines">
+          <ul className="hidden shrink-0 flex-col items-end gap-1 text-right md:flex" aria-label={ui.common.disciplines}>
             {project.disciplines.slice(0, 2).map((d) => (
               <li key={d} className="t-label !text-[0.68rem] text-white/45">
-                {d}
+                {ui.disciplines[d] ?? d}
               </li>
             ))}
           </ul>

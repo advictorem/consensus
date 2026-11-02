@@ -1,17 +1,22 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import type { Article } from "@/content/types";
 import { formatDate } from "@/lib/format";
+import type { Locale } from "@/i18n/config";
+import { getUI } from "@/i18n/ui";
 
 export default function JournalCard({
+  locale,
   article,
   featured = false,
   className = "",
 }: {
+  locale: Locale;
   article: Article;
   featured?: boolean;
   className?: string;
 }) {
+  const ui = getUI(locale);
   return (
     <article className={`group ${className}`} data-reveal>
       <Link href={`/journal/${article.slug}`} className="block">
@@ -26,23 +31,23 @@ export default function JournalCard({
           />
           {article.status === "draft" && (
             <span className="t-label absolute left-4 top-4 rounded-full border border-white/40 bg-black/50 px-3 py-1.5 !text-[0.65rem] text-white/80">
-              Draft
+              {ui.common.draft}
             </span>
           )}
         </div>
         <div className="mt-5">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-white/50">
-            <span className="t-label !text-[0.7rem] gradient-text">{article.category}</span>
+            <span className="t-label !text-[0.7rem] gradient-text">{ui.categories[article.category] ?? article.category}</span>
             <span aria-hidden="true">·</span>
-            {article.date ? <time dateTime={article.date} className="text-xs">{formatDate(article.date)}</time> : <span className="text-xs">Unpublished</span>}
+            {article.date ? <time dateTime={article.date} className="text-xs">{formatDate(article.date, locale)}</time> : <span className="text-xs">{ui.common.unpublished}</span>}
             <span aria-hidden="true">·</span>
-            <span className="text-xs">{article.readingTime} min read</span>
+            <span className="text-xs">{article.readingTime} {ui.common.minRead}</span>
           </div>
           <h3 className={`display mt-3 leading-[0.95] ${featured ? "t-h3" : "text-[clamp(1.5rem,2.2vw,2.1rem)]"}`}>
             {article.title}
           </h3>
           <p className="mt-3 max-w-[52ch] text-[0.95rem] text-white/65">{article.excerpt}</p>
-          {article.author && <p className="mt-3 text-xs text-white/45">By {article.author}</p>}
+          {article.author && <p className="mt-3 text-xs text-white/45">{ui.common.by} {article.author}</p>}
         </div>
       </Link>
     </article>

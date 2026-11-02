@@ -1,31 +1,44 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import InteriorHero from "@/components/InteriorHero";
 import SectionHeader from "@/components/SectionHeader";
 import GhostButton, { Arrow } from "@/components/GhostButton";
-import { CAPABILITIES } from "@/content/capabilities";
-import { getProject } from "@/content/projects";
+import { getCapabilities, getProject } from "@/content";
+import { alternates, isLocale, type Locale } from "@/i18n/config";
+import { getUI } from "@/i18n/ui";
 
-export const metadata: Metadata = {
-  title: "What We Do",
-  description:
-    "Strategy, public relations, creative, digital, community engagement, and campaigns—connected thinking for communications that resonate and deliver results.",
-  alternates: { canonical: "/what-we-do" },
+type Params = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { locale } = await params;
+  const ui = getUI(isLocale(locale) ? locale : "en");
+  return { title: ui.pages.whatWeDo.title, description: ui.pages.whatWeDo.description, alternates: alternates("/what-we-do") };
+}
+
+const splitAmp = (t: string) => {
+  const sep = t.includes(" & ") ? " & " : t.includes(" y ") ? " y " : t.includes(" e ") ? " e " : null;
+  if (!sep) return [t];
+  const [a, ...rest] = t.split(sep);
+  return [`${a}${sep.trimEnd()}`, rest.join(sep)];
 };
 
-export default function WhatWeDoPage() {
+export default async function WhatWeDoPage({ params }: Params) {
+  const { locale: raw } = await params;
+  const locale: Locale = isLocale(raw) ? raw : "en";
+  const ui = getUI(locale);
+  const CAPABILITIES = getCapabilities(locale);
+
   return (
     <>
       <InteriorHero
-        eyebrow="What we do"
-        lines={["We make", "connections count."]}
-        copy="Complex challenges need connected thinking. We combine strategy, storytelling, technology, and real-world engagement to create communications that resonate and deliver results."
+        eyebrow={ui.common.whatWeDoEyebrow}
+        lines={ui.pages.whatWeDo.h1}
+        copy={ui.pages.whatWeDo.intro}
         image={{ src: "/images/la/griffith-observatory.jpg", alt: "Griffith Observatory's white Art Deco walls above the Los Angeles basin", position: "40% 50%" }}
       />
 
-      {/* Index */}
-      <section className="container-x pt-[clamp(4rem,8vw,7rem)]" aria-label="Capabilities index">
+      <section className="container-x pt-[clamp(4rem,8vw,7rem)]" aria-label={ui.common.capabilitiesIndex}>
         <ol className="grid gap-y-3 border-y border-white/10 py-8 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
           {CAPABILITIES.map((c) => (
             <li key={c.slug}>
@@ -39,24 +52,19 @@ export default function WhatWeDoPage() {
 
       {CAPABILITIES.map((c, i) => {
         const flip = i % 2 === 1;
-        const related = c.relatedProjects.map(getProject).filter(Boolean);
+        const related = c.relatedProjects.map((s) => getProject(locale, s)).filter(Boolean);
         return (
-          <section
-            key={c.slug}
-            id={c.slug}
-            className="container-x scroll-mt-24 border-b border-white/10 py-[clamp(5rem,10vw,9rem)]"
-            aria-labelledby={`cap-${c.slug}-h`}
-          >
+          <section key={c.slug} id={c.slug} className="container-x scroll-mt-24 border-b border-white/10 py-[clamp(5rem,10vw,9rem)]" aria-labelledby={`cap-${c.slug}-h`}>
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
               <div className={`lg:col-span-6 ${flip ? "lg:order-2 lg:col-start-7" : ""}`}>
                 <p className="eyebrow mb-6" data-reveal>
                   {c.number}
                 </p>
-                <SectionHeader id={`cap-${c.slug}-h`} lines={c.title.split(" & ").map((s, j, arr) => (j < arr.length - 1 ? `${s} &` : s))} />
+                <SectionHeader id={`cap-${c.slug}-h`} lines={splitAmp(c.title)} />
                 <p className="t-lead mt-8 max-w-[44ch] text-white/85" data-reveal>
                   {c.description}
                 </p>
-                <ul className="mt-10 grid gap-x-8 gap-y-3 sm:grid-cols-2" aria-label={`${c.title} services`}>
+                <ul className="mt-10 grid gap-x-8 gap-y-3 sm:grid-cols-2" aria-label={`${c.title} — ${ui.common.services}`}>
                   {c.services.map((s, j) => (
                     <li key={s} className="flex items-baseline gap-3 border-t border-white/10 pt-3 text-[0.95rem] text-white/75" data-reveal style={{ ["--reveal-delay" as string]: `${j * 50}ms` }}>
                       <span className="gradient-text t-label !text-[0.6rem]">{String(j + 1).padStart(2, "0")}</span>
@@ -66,7 +74,7 @@ export default function WhatWeDoPage() {
                 </ul>
                 {related.length > 0 && (
                   <div className="mt-10" data-reveal>
-                    <p className="t-label mb-3 text-white/45">Related work</p>
+                    <p className="t-label mb-3 text-white/45">{ui.common.relatedWork}</p>
                     <ul className="flex flex-wrap gap-x-6 gap-y-2">
                       {related.map((p) => (
                         <li key={p!.slug}>
@@ -80,20 +88,13 @@ export default function WhatWeDoPage() {
                 )}
                 <div className="mt-10" data-reveal>
                   <GhostButton href="/contact" size="sm">
-                    Talk to us about {c.title.split(" & ")[0].toLowerCase()}
+                    {ui.common.talkToUsAbout} {splitAmp(c.title)[0].replace(/ (&|y|e)$/, "").toLowerCase()}
                   </GhostButton>
                 </div>
               </div>
               <div className={`lg:col-span-5 ${flip ? "lg:order-1" : "lg:col-start-8"} ${i % 3 === 1 ? "lg:self-start" : "lg:self-center"}`} data-reveal="mask">
                 <div className={`relative overflow-hidden bg-near-black ${i % 2 ? "aspect-[3/4]" : "aspect-[4/5]"}`}>
-                  <Image
-                    src={c.image.src}
-                    alt={c.image.alt}
-                    fill
-                    sizes="(min-width: 1024px) 42vw, 100vw"
-                    className="object-cover grayscale-[35%]"
-                    style={{ objectPosition: c.image.position ?? "center" }}
-                  />
+                  <Image src={c.image.src} alt={c.image.alt} fill sizes="(min-width: 1024px) 42vw, 100vw" className="object-cover grayscale-[35%]" style={{ objectPosition: c.image.position ?? "center" }} />
                 </div>
               </div>
             </div>
@@ -103,10 +104,10 @@ export default function WhatWeDoPage() {
 
       <section className="container-x section-y">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <SectionHeader lines={["Have a challenge", "worth solving?"]} size="h3" />
+          <SectionHeader lines={ui.common.haveChallenge} size="h3" />
           <div data-reveal>
             <GhostButton href="/contact" size="lg">
-              Let&rsquo;s talk
+              {ui.common.letsTalk}
             </GhostButton>
           </div>
         </div>

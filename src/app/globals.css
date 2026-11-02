@@ -118,6 +118,7 @@ strong, b { font-weight: 700; }
   letter-spacing: 0.1em; /* ≈ Adobe tracking +100 */
 }
 .t-hero     { font-size: var(--fs-hero); }
+.t-hero--long { font-size: clamp(3.6rem, 9.2vw, 9.5rem); }
 .t-interior { font-size: var(--fs-interior); }
 .t-h2       { font-size: var(--fs-h2); }
 .t-h3       { font-size: var(--fs-h3); line-height: 0.95; }

@@ -1,14 +1,16 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useState } from "react";
 import type { Capability } from "@/content/types";
 import { Arrow } from "./GhostButton";
+import { useUI } from "@/i18n/LocaleProvider";
 
 /**
  * Numbered editorial rows (accordion). One open at a time; keyboard accessible.
  */
 export default function CapabilityRows({ items }: { items: Capability[] }) {
+  const ui = useUI();
   const [open, setOpen] = useState<string | null>(items[0]?.slug ?? null);
 
   return (
@@ -65,7 +67,7 @@ export default function CapabilityRows({ items }: { items: Capability[] }) {
                     tabIndex={isOpen ? 0 : -1}
                     className="link-line t-label inline-flex items-center gap-2 self-start text-white/80 hover:text-white md:justify-self-end"
                   >
-                    Learn more <Arrow className="!h-4 !w-4" />
+                    {ui.common.learnMore} <Arrow className="!h-4 !w-4" />
                   </Link>
                 </div>
               </div>

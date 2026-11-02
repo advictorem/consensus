@@ -3,10 +3,13 @@
 import { useMemo, useState } from "react";
 import type { Discipline, Project } from "@/content/types";
 import ProjectCard from "./ProjectCard";
+import { useLocale, useUI } from "@/i18n/LocaleProvider";
 
 const FILTERS: ("All" | Discipline)[] = ["All", "Campaigns", "Creative", "Community", "Digital", "Strategy"];
 
 export default function WorkGrid({ projects }: { projects: Project[] }) {
+  const locale = useLocale();
+  const ui = useUI();
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
   const list = useMemo(
     () => (filter === "All" ? projects : projects.filter((p) => p.disciplines.includes(filter))),
@@ -15,7 +18,7 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      <div className="no-scrollbar -mx-[var(--gutter)] mb-14 overflow-x-auto px-[var(--gutter)]" role="tablist" aria-label="Filter projects">
+      <div className="no-scrollbar -mx-[var(--gutter)] mb-14 overflow-x-auto px-[var(--gutter)]" role="tablist" aria-label={ui.common.filterProjects}>
         <div className="flex gap-2">
           {FILTERS.map((f) => {
             const active = f === filter;
@@ -29,7 +32,7 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
                 data-active={active ? "true" : undefined}
                 style={active ? { color: "#000", borderColor: "transparent" } : { borderColor: "rgba(255,255,255,0.3)" }}
               >
-                {f}
+                {f === "All" ? ui.common.all : ui.disciplines[f] ?? f}
               </button>
             );
           })}
@@ -42,9 +45,9 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
           const cls = pattern === 0 ? "md:col-span-12" : pattern === 1 ? "md:col-span-7" : "md:col-span-5 md:mt-20";
           const aspect = pattern === 0 ? "aspect-[16/9] md:aspect-[21/9]" : pattern === 1 ? "aspect-[4/3]" : "aspect-[4/5]";
           const sizes = pattern === 0 ? "100vw" : pattern === 1 ? "(min-width:768px) 58vw, 100vw" : "(min-width:768px) 42vw, 100vw";
-          return <ProjectCard key={p.slug} project={p} index={i} aspect={aspect} sizes={sizes} className={cls} priority={i === 0} />;
+          return <ProjectCard locale={locale} key={p.slug} project={p} index={i} aspect={aspect} sizes={sizes} className={cls} priority={i === 0} />;
         })}
-        {list.length === 0 && <p className="text-white/60 md:col-span-12">No projects in this category yet.</p>}
+        {list.length === 0 && <p className="text-white/60 md:col-span-12">{ui.common.noProjects}</p>}
       </div>
     </div>
   );

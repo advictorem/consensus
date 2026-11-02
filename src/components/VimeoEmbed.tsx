@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useUI } from "@/i18n/LocaleProvider";
 
 /**
  * Click-to-load Vimeo player (no third-party JS until the user asks for it).
@@ -17,6 +18,7 @@ export default function VimeoEmbed({
   aspect?: string;
 }) {
   const [active, setActive] = useState(false);
+  const ui = useUI();
   const src = `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`;
 
   return (
@@ -35,7 +37,7 @@ export default function VimeoEmbed({
           type="button"
           onClick={() => setActive(true)}
           className="group absolute inset-0 flex items-end justify-between p-6 text-left md:p-8"
-          aria-label={`Play video: ${title}`}
+          aria-label={`${ui.common.play}: ${title}`}
           style={
             poster
               ? { backgroundImage: `url(${poster})`, backgroundSize: "cover", backgroundPosition: "center" }

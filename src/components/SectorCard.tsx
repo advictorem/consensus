@@ -1,9 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/Link";
 import type { Sector } from "@/content/types";
 import { Arrow } from "./GhostButton";
+import type { Locale } from "@/i18n/config";
+import { getUI } from "@/i18n/ui";
 
-export default function SectorCard({ sector }: { sector: Sector }) {
+export default function SectorCard({ sector, locale }: { sector: Sector; locale: Locale }) {
+  const ui = getUI(locale);
   return (
     <li className="border-t border-white/12 last:border-b" data-reveal>
       <Link
@@ -18,7 +21,7 @@ export default function SectorCard({ sector }: { sector: Sector }) {
           <p className="t-sub mt-4 text-[1.05rem] text-white/85">{sector.positioning}</p>
           <p className="mt-3 max-w-[56ch] text-[0.95rem] text-white/60">{sector.summary}</p>
           <span className="link-line t-label mt-6 inline-flex items-center gap-2 text-white/80 group-hover:text-white">
-            Explore <Arrow className="!h-4 !w-4" />
+            {ui.common.explore} <Arrow className="!h-4 !w-4" />
           </span>
         </div>
         <div className="media-zoom relative aspect-[16/10] overflow-hidden bg-near-black md:col-span-5 md:col-start-8">

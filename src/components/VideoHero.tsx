@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import GhostButton from "./GhostButton";
 import AnimatedHeading from "./AnimatedHeading";
+import { useUI } from "@/i18n/LocaleProvider";
 
 export default function VideoHero({
   lines,
@@ -16,6 +17,7 @@ export default function VideoHero({
   secondary: { label: string; href: string };
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const ui = useUI();
 
   useEffect(() => {
     const v = videoRef.current;
@@ -76,7 +78,7 @@ export default function VideoHero({
         <AnimatedHeading
           as="h1"
           lines={lines}
-          className="display t-hero max-w-[12ch]"
+          className={`display t-hero max-w-[14ch] ${lines.join(" ").length > 24 ? "t-hero--long" : ""}`}
         />
         <div className="mt-10 flex max-w-5xl flex-col gap-8 md:mt-12 md:flex-row md:items-end md:justify-between">
           <p
@@ -106,7 +108,7 @@ export default function VideoHero({
         data-reveal
         style={{ ["--reveal-delay" as string]: "1100ms" }}
       >
-        <span className="t-label text-white/50">Scroll</span>
+        <span className="t-label text-white/50">{ui.common.scroll}</span>
         <span className="relative block h-12 w-px overflow-hidden bg-white/20">
           <span className="scroll-line absolute inset-x-0 top-0 h-1/2 bg-white" />
         </span>

@@ -1,7 +1,10 @@
 import Image from "next/image";
 import type { TeamMember } from "@/content/types";
+import type { Locale } from "@/i18n/config";
+import { getUI } from "@/i18n/ui";
 
-export default function TeamMemberCard({ member, index }: { member: TeamMember; index: number }) {
+export default function TeamMemberCard({ member, index, locale }: { member: TeamMember; index: number; locale: Locale }) {
+  const ui = getUI(locale);
   return (
     <article className="group" data-reveal style={{ ["--reveal-delay" as string]: `${(index % 3) * 100}ms` }}>
       <div className="relative aspect-[4/5] overflow-hidden bg-near-black">
@@ -22,7 +25,7 @@ export default function TeamMemberCard({ member, index }: { member: TeamMember; 
                 .map((n) => n[0])
                 .join("")}
             </span>
-            <span className="t-label absolute bottom-4 left-4 !text-[0.62rem] text-white/30">Portrait pending</span>
+            <span className="t-label absolute bottom-4 left-4 !text-[0.62rem] text-white/30">{ui.common.portraitPending}</span>
           </div>
         )}
         <div className="gradient-rule absolute inset-x-0 bottom-0 origin-left scale-x-0 transition-transform duration-700 group-hover:scale-x-100" />

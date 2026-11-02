@@ -1,9 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useEffect } from "react";
 import { NAV, CTA, SITE } from "@/lib/site";
+import { useUI } from "@/i18n/LocaleProvider";
 import GhostButton from "./GhostButton";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function MobileNavigation({
   open,
@@ -14,6 +16,8 @@ export default function MobileNavigation({
   onClose: () => void;
   isActive: (href: string) => boolean;
 }) {
+  const ui = useUI();
+
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
@@ -36,9 +40,9 @@ export default function MobileNavigation({
     >
       <div className="gradient-rule absolute inset-x-0 top-0 opacity-60" />
       <nav
-        aria-label="Mobile"
-        className="container-x flex h-full flex-col justify-between pb-10"
-        style={{ paddingTop: "calc(var(--header-h) + 1.5rem)" }}
+        aria-label={ui.a11y.mobileNav}
+        className="container-x flex h-full flex-col justify-between overflow-y-auto pb-10"
+        style={{ paddingTop: "calc(var(--header-h) + 1rem)" }}
       >
         <ul className="flex flex-col gap-1">
           {NAV.map((item, i) => (
@@ -55,34 +59,28 @@ export default function MobileNavigation({
                 href={item.href}
                 onClick={onClose}
                 aria-current={isActive(item.href) ? "page" : undefined}
-                className={`display block py-2 text-[clamp(2.6rem,11vw,4.5rem)] leading-[0.95] transition-colors ${
+                className={`display block py-1.5 text-[clamp(2.4rem,10vw,4.2rem)] leading-[0.95] transition-colors ${
                   isActive(item.href) ? "gradient-text" : "text-white"
                 }`}
               >
-                {item.label}
+                {ui.nav[item.key]}
               </Link>
             </li>
           ))}
         </ul>
         <div
-          className="flex flex-col gap-6"
-          style={{
-            transition: "opacity .6s var(--ease-out)",
-            transitionDelay: open ? "480ms" : "0ms",
-            opacity: open ? 1 : 0,
-          }}
+          className="mt-10 flex flex-col gap-6"
+          style={{ transition: "opacity .6s var(--ease-out)", transitionDelay: open ? "480ms" : "0ms", opacity: open ? 1 : 0 }}
         >
           <GhostButton href={CTA.href} size="lg" className="self-start">
-            {CTA.label}
+            {ui.nav.cta}
           </GhostButton>
-          <a
-            href={SITE.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="t-label text-white/60"
-          >
-            LinkedIn
-          </a>
+          <div className="flex items-center justify-between">
+            <LanguageSwitcher size="lg" />
+            <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="t-label text-white/60">
+              LinkedIn
+            </a>
+          </div>
         </div>
       </nav>
     </div>
