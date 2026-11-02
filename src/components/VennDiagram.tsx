@@ -38,22 +38,34 @@ export default function VennDiagram({
             <stop offset="100%" stopColor="#9E479B" />
           </linearGradient>
         </defs>
-        <g className="venn-rings">
         {centers.map((c, i) => (
           <circle
             key={`fill-${i}`}
+            className="venn-fill"
             cx={c.cx}
             cy={c.cy}
             r={r}
             fill={colors[i]}
             fillOpacity="0.14"
-            style={{ mixBlendMode: "screen" }}
+            style={{ mixBlendMode: "screen", ["--i" as string]: `${i * 350}ms` }}
           />
         ))}
         {centers.map((c, i) => (
-          <circle key={`ring-${i}`} cx={c.cx} cy={c.cy} r={r} fill="none" stroke="url(#venn-grad)" strokeWidth="1.5" strokeOpacity="0.9" />
+          <circle
+            key={`ring-${i}`}
+            className="venn-ring"
+            cx={c.cx}
+            cy={c.cy}
+            r={r}
+            fill="none"
+            stroke="url(#venn-grad)"
+            strokeWidth="1.5"
+            strokeOpacity="0.9"
+            strokeLinecap="round"
+            transform={`rotate(-90 ${c.cx} ${c.cy})`}
+            style={{ ["--i" as string]: `${i * 350}ms` }}
+          />
         ))}
-        </g>
         {items.slice(0, 4).map((it, i) => (
           <text
             key={it.k}
@@ -70,8 +82,6 @@ export default function VennDiagram({
             {it.k.toUpperCase()}
           </text>
         ))}
-        {/* Center mark */}
-        <circle cx="260" cy="260" r="5" fill="#fff" />
       </svg>
       <figcaption className="sr-only">
         {items.map((i) => (

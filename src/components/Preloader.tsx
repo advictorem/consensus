@@ -51,7 +51,7 @@ export default function Preloader() {
       }`}
     >
       <div
-        className="preloader-mark h-[140px] w-[135px] md:h-[200px] md:w-[192px]"
+        className="preloader-mark h-[112px] w-[108px] md:h-[160px] md:w-[154px]"
         style={{
           WebkitMaskImage: "url(/preloader/logo-mask.png)",
           maskImage: "url(/preloader/logo-mask.png)",

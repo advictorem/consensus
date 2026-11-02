@@ -20,7 +20,7 @@ export default function AnimatedHeading({
   return (
     <Comp id={id} className={className} data-reveal="wipe">
       {lines.map((line, i) => (
-        <span key={i} className="block" style={{ ["--reveal-delay" as string]: `${i * 140}ms` }}>
+        <span key={i} className="block" style={{ ["--reveal-delay" as string]: `${i * 320}ms` }}>
           {line}
         </span>
       ))}

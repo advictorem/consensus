@@ -51,7 +51,7 @@ export default function SiteHeader() {
         }`}
       >
         <div className="container-x flex items-center justify-between" style={{ height: "var(--header-h)" }}>
-          <Logo height={78} priority className="relative z-[60]" />
+          <Logo height={46} priority className="relative z-[60]" />
 
           <nav aria-label={ui.a11y.primaryNav} className="hidden items-center gap-9 lg:flex">
             {NAV.filter((n) => n.href !== "/").map((item) => (

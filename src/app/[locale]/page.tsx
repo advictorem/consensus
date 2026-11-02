@@ -6,7 +6,7 @@ import FeaturedWorkGrid from "@/components/FeaturedWorkGrid";
 import CapabilityRows from "@/components/CapabilityRow";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import VennDiagram from "@/components/VennDiagram";
-import SplitLines from "@/components/SplitLines";
+import ScrubText from "@/components/ScrubText";
 import GhostButton from "@/components/GhostButton";
 import { CLIENT_LOGOS } from "@/content/clients";
 import { getHome, getCapabilities, getFeaturedProjects } from "@/content";
@@ -34,12 +34,10 @@ export default async function HomePage({ params }: Params) {
 
       {/* 02 — Who we are */}
       <section className="container-x section-y" aria-labelledby="who">
-        <div className="mx-auto flex max-w-[62rem] flex-col items-center text-center">
+        <div className="mx-auto flex max-w-[78rem] flex-col items-center text-center">
           <SectionHeader id="who" lines={HOME.who.lines} className="flex flex-col items-center" headingClassName="text-center" />
-          <div className="mt-10 max-w-[62ch]">
-            {HOME.who.paragraphs.map((p, i) => (
-              <SplitLines key={i} text={p} className={`t-lead text-white/85 ${i ? "mt-6" : ""}`} delay={0.15 + i * 0.35} />
-            ))}
+          <div className="mt-12 w-full">
+            <ScrubText text={HOME.who.paragraphs.join(" ")} className="display mx-auto max-w-[70rem] text-[clamp(2rem,4.3vw,4.6rem)] leading-[1] text-center" />
           </div>
           <div className="mt-10" data-reveal style={{ ["--reveal-delay" as string]: "450ms" }}>
             <GhostButton href={HOME.who.cta.href}>{HOME.who.cta.label}</GhostButton>
@@ -53,7 +51,7 @@ export default async function HomePage({ params }: Params) {
       </section>
 
       {/* 04 — Capabilities */}
-      <section className="container-x section-y border-t border-white/10" aria-labelledby="capabilities">
+      <section className="container-x section-y" aria-labelledby="capabilities">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeader id="capabilities" lines={HOME.capabilities.lines} />
@@ -74,7 +72,10 @@ export default async function HomePage({ params }: Params) {
       </section>
 
       {/* 05 — Clients */}
-      <section className="container-x section-y border-t border-white/10" aria-label={HOME.clients.label}>
+      <section className="container-x section-y" aria-labelledby="clients">
+        <h2 id="clients" className="display t-h3 mb-16 text-center" data-reveal="wipe">
+          <span className="block">{HOME.clients.label}</span>
+        </h2>
         <ClientLogoGrid logos={CLIENT_LOGOS} locale={locale} />
       </section>
 

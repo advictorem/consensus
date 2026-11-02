@@ -73,11 +73,11 @@ export default function VideoHero({
         }}
       />
 
-      <div className="container-x relative w-full pb-[clamp(5rem,14vh,9rem)] pt-[calc(var(--header-h)+1rem)]">
+      <div className="container-x relative w-full pb-[clamp(3rem,8vh,5rem)] pt-[calc(var(--header-h)+5rem)]">
         <AnimatedHeading
           as="h1"
           lines={lines}
-          className={`display t-hero max-w-[14ch] ${lines.join(" ").length > 24 ? "t-hero--long" : ""}`}
+          className={`display t-hero !leading-[0.74] max-w-[16ch] ${lines.join(" ").length > 24 ? "t-hero--long" : ""}`}
         />
         <div className="mt-8 flex max-w-6xl flex-col gap-8 md:mt-10">
           <p
