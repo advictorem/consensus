@@ -73,7 +73,7 @@ export default function VideoHero({
         }}
       />
 
-      <div className="container-x relative w-full pb-[calc(clamp(3rem,8vh,6rem)+75px)] pt-[calc(var(--header-h)+3rem)]">
+      <div className="container-x relative w-full pb-[calc(clamp(3rem,8vh,6rem)+40px)] pt-[calc(var(--header-h)+3rem)]">
         <AnimatedHeading
           as="h1"
           lines={lines}

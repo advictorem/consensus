@@ -12,12 +12,12 @@ export default function LanguageSwitcher({ className = "", size = "sm" }: { clas
   const { path } = stripLocale(pathname);
 
   return (
-    <nav aria-label={ui.a11y.language} className={`flex items-center ${size === "lg" ? "gap-5" : size === "md" ? "gap-4" : "gap-3"} ${className}`}>
+    <nav aria-label={ui.a11y.language} className={`flex items-center ${size === "lg" ? "gap-3" : size === "md" ? "gap-2" : "gap-1.5"} ${className}`}>
       {LOCALES.map((l, i) => {
         const active = l === locale;
         return (
-          <span key={l} className="flex items-center gap-3">
-            {i > 0 && <span aria-hidden="true" className={`w-px bg-white/30 ${size === "sm" ? "h-3" : "h-4"}`} />}
+          <span key={l} className="flex items-center gap-2">
+            {i > 0 && <span aria-hidden="true" className={`w-px bg-white/35 ${size === "sm" ? "h-3" : "h-5"}`} />}
             <NextLink
               href={localeHref(path, l)}
               prefetch={false}
@@ -25,9 +25,9 @@ export default function LanguageSwitcher({ className = "", size = "sm" }: { clas
               lang={l}
               aria-current={active ? "true" : undefined}
               aria-label={LOCALE_LABELS[l].name}
-              className={`t-label transition-colors ${size === "lg" ? "!text-[1.1rem]" : size === "md" ? "!text-[1.15rem] font-bold" : "!text-[0.72rem]"} ${
-                active ? "gradient-text" : "text-white/70 hover:text-white"
-              }`}
+              className={`t-label flex items-center justify-center rounded-full transition-colors ${
+                size === "lg" ? "h-11 w-11 !text-[1.05rem]" : size === "md" ? "h-10 w-10 !text-[0.95rem]" : "h-8 w-8 !text-[0.72rem]"
+              } ${active ? "bg-white !text-black" : "text-white/75 hover:text-white"}`}
             >
               {LOCALE_LABELS[l].short}
             </NextLink>

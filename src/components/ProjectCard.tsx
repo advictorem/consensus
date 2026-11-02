@@ -59,7 +59,7 @@ export default function ProjectCard({
         <div className="mt-6">
           <div>
             <p className="text-[0.95rem] leading-tight text-white/65">{project.client}</p>
-            <h3 className="display mt-2 text-[clamp(1.7rem,2.8vw,2.8rem)] leading-[0.95]">
+            <h3 className="display mt-2 text-[clamp(1.7rem,2.8vw,2.8rem)] leading-[0.95] [text-wrap:balance] md:whitespace-nowrap">
               {project.title.split("\n").map((t, i) => (
                 <span key={i} className="block">
                   {t}

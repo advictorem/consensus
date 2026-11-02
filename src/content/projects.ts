@@ -12,7 +12,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "california-lottery",
     client: "California Lottery",
-    title: "Real People. Real Stories.\nReal Impact.",
+    title: "Real People. Real Stories. Real Impact.",
     descriptor: "A statewide campaign connecting communities with the real impact of Lottery contributions on public education.",
     disciplines: ["Campaigns", "Creative", "Digital"],
     tags: ["Integrated Campaign", "Public Awareness", "Creative Storytelling", "Digital Media"],

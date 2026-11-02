@@ -5,7 +5,7 @@ export const HOME = {
     primary: { label: "Explore our work", href: "#work" },
   },
   who: {
-    lines: ["We are", "Consensus."],
+    lines: ["We are Consensus."],
     paragraphs: [
       "Every brand has a story. Every community has a voice. And every meaningful idea deserves to be heard.",
       "We work at the intersection of people, purpose, and possibility turning complex challenges into clear narratives, authentic relationships, and communications that move things forward.",

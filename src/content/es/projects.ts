@@ -5,7 +5,7 @@ export const PROJECTS_ES: Record<
   Partial<Pick<Project, "title" | "descriptor" | "tags" | "intro" | "challenge" | "strategy" | "execution" | "outcomes" | "outcomesNote">>
 > = {
   "california-lottery": {
-    title: "Personas reales. Historias reales.\nImpacto real.",
+    title: "Personas reales. Historias reales. Impacto real.",
     descriptor: "Una campaña estatal que conecta a las comunidades con el impacto real de las contribuciones de la Lotería a la educación pública.",
     tags: ["Campaña integrada", "Concientización pública", "Storytelling creativo", "Medios digitales"],
     intro:

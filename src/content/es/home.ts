@@ -7,7 +7,7 @@ export const HOME_ES: typeof HOME = {
     primary: { label: "Explora nuestro trabajo", href: "#work" },
   },
   who: {
-    lines: ["Somos", "Consensus."],
+    lines: ["Somos Consensus."],
     paragraphs: [
       "Toda marca tiene una historia. Toda comunidad tiene una voz. Y toda idea con sentido merece ser escuchada.",
       "Trabajamos en la intersección entre las personas, el propósito y lo posible: convertimos retos complejos en narrativas claras, relaciones auténticas y comunicaciones que hacen avanzar las cosas.",
