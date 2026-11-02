@@ -13,6 +13,8 @@ _Build date: 2 November 2026 · Branch: `develop`_
 
 ## 2. Pages implemented
 
+> **Nav labels no longer match their route names.** Per the 2 Nov revision: nav **"What We Do"** → `/work` (the portfolio) and nav **"Services"** → `/what-we-do` (the capabilities page). Page titles and eyebrows were changed to match the nav so the labels stay consistent once you land. The URL slugs were left alone to avoid breaking the links already shared; say the word and they can be swapped (`/work` → `/what-we-do`, `/what-we-do` → `/services`) with redirects from the old paths.
+
 | Route | Template | Notes |
 |---|---|---|
 | `/` | Homepage | Video hero → Who we are → Featured work (5) → Capabilities (accordion rows) → Client grid → Consensus difference → Journal (3) → Footer |
@@ -72,6 +74,7 @@ _Build date: 2 November 2026 · Branch: `develop`_
 | **Project imagery** | Supplied images in place for California Lottery, Goodman, Hollywood Bowl, Nestlé, Aliso Viejo | Equity Office (Colorado Center) and Pershing Square Renew still use LA stand-ins. Confirm usage rights for the supplied Goodman render, Hollywood Bowl and Nestlé photographs. |
 | **Capabilities deck** (`Consensus-Inc-Quals-Deck(2025).pdf`) | Not received | Case-study detail for Goodman, Hollywood Bowl and Nestlé is limited to the brief's one-liners; outcomes read "to be published upon client approval". |
 | **Client-logo and statistics reference screenshots** | Not received | Layouts built from the Allison reference description and the brief. |
+| **Badge SVG typo** | `public/brand/consensus-badge.svg` — the supplied brand asset reads **"DRIVE CHANGE. MAKE IPMACT."** (M and P transposed). Shipped as supplied; not altered. | Supply a corrected SVG, or approve a fix — the lettering is outlined paths, so the two glyphs have to be repositioned by hand along the arc. |
 | **Contact form backend** | Fully wired to Resend; returns a clear 503 with the email address until `RESEND_API_KEY` is set | Create a Resend account, verify `consensusinc.com` as a sending domain, set `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` in Vercel. |
 
 ## 6. Outstanding content approvals
