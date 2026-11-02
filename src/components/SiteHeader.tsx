@@ -64,10 +64,10 @@ export default function SiteHeader() {
                 {ui.nav[item.key]}
               </Link>
             ))}
-            <LanguageSwitcher className="ml-2" size="md" />
-            <GhostButton href={CTA.href} arrow={false} className="btn--nav ml-1">
+            <GhostButton href={CTA.href} arrow={false} className="btn--nav ml-2">
               {ui.nav.cta}
             </GhostButton>
+            <LanguageSwitcher className="ml-3" size="md" />
           </nav>
 
           <div className="flex items-center gap-5 lg:hidden">

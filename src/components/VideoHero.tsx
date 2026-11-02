@@ -48,7 +48,7 @@ export default function VideoHero({
   }, []);
 
   return (
-    <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-black">
+    <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-black">
       <video
         ref={videoRef}
         className="absolute inset-0 -z-20 h-full w-full object-cover"
@@ -73,15 +73,15 @@ export default function VideoHero({
         }}
       />
 
-      <div className="container-x relative w-full pb-[calc(clamp(3rem,8vh,6rem)+40px)] pt-[calc(var(--header-h)+3rem)]">
+      <div className="container-x relative w-full pb-[clamp(5rem,14vh,9rem)] pt-[calc(var(--header-h)+1rem)]">
         <AnimatedHeading
           as="h1"
           lines={lines}
           className={`display t-hero max-w-[14ch] ${lines.join(" ").length > 24 ? "t-hero--long" : ""}`}
         />
-        <div className="mt-10 flex max-w-6xl flex-col gap-8 md:mt-12">
+        <div className="mt-8 flex max-w-6xl flex-col gap-8 md:mt-10">
           <p
-            className="t-lead max-w-[36ch] text-white/85"
+            className="max-w-[36ch] text-[clamp(1.25rem,1.7vw,2.1rem)] leading-[1.35] text-white/85"
             data-reveal
             style={{ ["--reveal-delay" as string]: "500ms" }}
           >

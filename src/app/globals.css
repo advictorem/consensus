@@ -30,7 +30,7 @@
   --font-body: var(--font-roboto), system-ui, -apple-system, Helvetica, Arial, sans-serif;
 
   /* Responsive type scale (desktop targets from the brief) */
-  --fs-hero: clamp(5.4rem, 22.5vw, 23rem);       /* ~36% larger than the first pass */       /* 72 → 200px */
+  --fs-hero: clamp(5.6rem, 26.5vw, 27rem);       /* ~36% larger than the first pass */       /* 72 → 200px */
   --fs-interior: clamp(3.75rem, 9.5vw, 10rem);     /* 60 → 160px */
   --fs-h2: clamp(2.9rem, 6.6vw, 7.2rem);           /* 46 → 115px */
   --fs-h3: clamp(2rem, 3.6vw, 3.75rem);            /* 32 → 60px */
