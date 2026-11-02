@@ -27,7 +27,7 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  // Skip API routes, Next internals, metadata files and public asset folders.
+  // Skip API routes, Next internals and any static asset (by file extension).
   // (Do NOT exclude all dotted paths: segment prefetches use "/about.segments/….rsc".)
-  matcher: ["/((?!api|_next|brand|images|media|sitemap\\.xml|robots\\.txt|favicon\\.ico).*)"],
+  matcher: ["/((?!api|_next|.*\\.(?:png|jpe?g|gif|svg|webp|avif|mp4|webm|mov|ico|txt|xml|json|woff2?|ttf|css|js|map)$).*)"],
 };

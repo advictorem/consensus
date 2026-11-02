@@ -22,8 +22,8 @@ _Build date: 2 November 2026 · Branch: `develop`_
 | `/work/[slug]` | Project detail | Hero, intro, Challenge / Strategy / Execution, Vimeo (click-to-load), gallery, verified outcomes, related, CTA — 7 projects |
 | `/sectors` | Sector landing | Editorial list of 7 sectors |
 | `/sectors/[slug]` | Sector detail | Context, capabilities, challenges, perspective, case studies (Overview → Challenge → Insight → Strategy → Execution → Impact → Related capabilities), next-sector link |
-| `/journal` | Journal | Category strip, featured article, grid |
-| `/journal/[slug]` | Article | Metadata, body, related, Article JSON-LD; drafts are labelled + `noindex` |
+| `/insights` | Insights | Category strip, featured article, grid |
+| `/insights/[slug]` | Article | Metadata, body, related, Article JSON-LD; drafts are labelled + `noindex` |
 | `/contact` | Contact | Verified contact details, form (original field structure preserved), location panels |
 | `/api/contact` | Route handler | Validation, honeypot, Resend delivery |
 | `/sitemap.xml`, `/robots.txt`, 404 | | robots disallows indexing on Vercel preview environments |
@@ -35,6 +35,11 @@ _Build date: 2 November 2026 · Branch: `develop`_
 - SEO: `<html lang>`, `hreflang` alternates (en / es / x-default) on every page, localized titles/descriptions/OG locale, both locales in `sitemap.xml`, Article JSON-LD carries `inLanguage`.
 - Translations: UI strings in `src/i18n/ui.ts`; content in `src/content/es/*.ts` (home, about, capabilities, projects, sectors, case studies, team, journal, contact form labels, locations). Translated by Claude in neutral Latin American / US Spanish — **recommend a native-speaker review before launch**, especially: "agencia de registro" (agency of record), "grupos de interés" (stakeholders), the Lottery slogan "Tú juegas, las escuelas ganan.", and the contact form label "Su cargo" (Your Title).
 - Not yet translated: image `alt` text on project/sector/capability images (English), client names, and the contact form's server-side field labels in the delivered email (English).
+
+## 2c. Preloader & share image
+
+- `Preloader` (black screen, LAX Theme Building GIF masked inside the triangle silhouette, 2.2 s then 0.9 s fade) shows once per browser session and is skipped under reduced-motion. Mask: `public/preloader/logo-mask.png`; GIF: `public/preloader/lax.gif` (187×150 source — a higher-resolution loop would sharpen it).
+- Open Graph / Twitter share image: `public/og/share.jpg` (1200×630), set in the locale layout metadata.
 
 ## 3. Motion & interactions
 

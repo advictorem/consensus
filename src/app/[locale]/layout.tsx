@@ -10,6 +10,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollRotatingBadge from "@/components/ScrollRotatingBadge";
 import RevealObserver from "@/components/RevealObserver";
+import Preloader from "@/components/Preloader";
 
 // Self-hosted Roboto (body). Files under src/app/fonts (OFL licensed).
 const roboto = localFont({
@@ -54,9 +55,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       url: SITE.url,
       title: ui.pages.home.title,
       description: ui.pages.home.description,
-      images: [{ url: "/media/hero-poster.jpg", width: 1920, height: 1080, alt: "Consensus" }],
+      images: [{ url: "/og/share.jpg", width: 1200, height: 630, alt: "Consensus — Los Angeles" }],
     },
-    twitter: { card: "summary_large_image" },
+    twitter: { card: "summary_large_image", images: ["/og/share.jpg"] },
     robots: { index: true, follow: true },
     icons: { icon: "/brand/consensus-icon.svg" },
   };
@@ -83,6 +84,7 @@ export default async function RootLayout({ children, params }: { children: React
       </head>
       <body>
         <LocaleProvider locale={locale}>
+          <Preloader />
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-black"

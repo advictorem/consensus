@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import InteriorHero from "@/components/InteriorHero";
 import WorkGrid from "@/components/WorkGrid";
 import SectionHeader from "@/components/SectionHeader";
@@ -29,7 +30,9 @@ export default async function WorkPage({ params }: Params) {
         image={{ src: "/images/la/urban-light.jpg", alt: "Visitors wandering through the Urban Light lamp-post installation at night", position: "50% 60%" }}
       />
       <section className="container-x section-y" aria-label={ui.common.portfolio}>
-        <WorkGrid projects={PROJECTS} />
+        <Suspense fallback={null}>
+          <WorkGrid projects={PROJECTS} />
+        </Suspense>
       </section>
       <section className="container-x pb-[var(--section)]">
         <div className="flex flex-col gap-8 border-t border-white/10 pt-16 md:flex-row md:items-end md:justify-between">

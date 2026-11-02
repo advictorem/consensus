@@ -28,7 +28,7 @@ export default function ProjectCard({
 }) {
   const ui = getUI(locale);
   return (
-    <article className={`group ${className}`} data-reveal style={{ ["--reveal-delay" as string]: `${delay}ms` }}>
+    <article className={`group relative ${className}`} data-reveal style={{ ["--reveal-delay" as string]: `${delay}ms` }}>
       <Link href={`/work/${project.slug}`} className="block" aria-label={`${project.client}: ${project.title.replace("\n", " ")} — ${ui.common.viewProject}`}>
         <div className={`media-zoom relative overflow-hidden bg-near-black ${aspect}`}>
           {project.thumb.video ? (
@@ -44,22 +44,14 @@ export default function ProjectCard({
               style={{ objectPosition: project.thumb.position ?? "center" }}
             />
           )}
-          <ul className="absolute right-4 top-4 flex flex-col items-end gap-1.5 text-right md:right-5 md:top-5" aria-label={ui.common.disciplines}>
-            {project.disciplines.slice(0, 2).map((d) => (
-              <li key={d} className="t-label !text-[0.72rem] !tracking-[0.14em] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-                {ui.disciplines[d] ?? d}
-              </li>
-            ))}
-          </ul>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-black/0 opacity-60 transition-opacity duration-700 group-hover:opacity-80" />
           <span className="absolute bottom-5 right-5 flex h-11 w-11 translate-x-2 items-center justify-center rounded-full border border-white/60 text-white opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100">
             <Arrow className="!h-4 !w-4" />
           </span>
         </div>
-        <div className="mt-6">
+        <div className="mt-6 flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-8">
           <div>
-            <p className="text-[0.95rem] leading-tight text-white/65">{project.client}</p>
-            <h3 className="display mt-2 text-[clamp(1.7rem,2.8vw,2.8rem)] leading-[0.95] [text-wrap:balance] md:whitespace-nowrap">
+            <h3 className="display text-[clamp(1.7rem,2.8vw,2.8rem)] leading-[0.95] [text-wrap:balance] md:whitespace-nowrap">
               {project.title.split("\n").map((t, i) => (
                 <span key={i} className="block">
                   {t}
@@ -68,8 +60,23 @@ export default function ProjectCard({
             </h3>
             <p className="mt-3 max-w-[48ch] text-[0.95rem] text-white/65">{project.descriptor}</p>
           </div>
+          <p className="t-sub shrink-0 text-[1.05rem] leading-tight text-[#3cc1ef] md:pt-1 md:text-right md:text-[1.15rem]">{project.client}</p>
         </div>
       </Link>
+
+      {/* Category pills — siblings of the card link so each is its own filter link */}
+      <ul className="absolute right-4 top-4 z-10 flex flex-wrap justify-end gap-1.5 md:right-5 md:top-5" aria-label={ui.common.disciplines}>
+        {project.disciplines.map((d) => (
+          <li key={d}>
+            <Link
+              href={`/work?filter=${encodeURIComponent(d)}`}
+              className="t-label inline-flex items-center rounded-full border border-white/50 bg-black/35 px-3 py-1.5 !text-[0.66rem] !tracking-[0.14em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white hover:text-black"
+            >
+              {ui.disciplines[d] ?? d}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </article>
   );
 }

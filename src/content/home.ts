@@ -38,8 +38,8 @@ export const HOME = {
     cta: { label: "How we work", href: "/what-we-do" },
   },
   journal: {
-    eyebrow: "The Journal",
+    eyebrow: "Insights",
     lines: ["Ideas worth", "sharing."],
-    cta: { label: "Read the Journal", href: "/journal" },
+    cta: { label: "Read our insights", href: "/insights" },
   },
 };

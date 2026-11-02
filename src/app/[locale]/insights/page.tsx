@@ -11,7 +11,7 @@ type Params = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const ui = getUI(isLocale(locale) ? locale : "en");
-  return { title: ui.pages.journal.title, description: ui.pages.journal.description, alternates: alternates("/journal") };
+  return { title: ui.pages.journal.title, description: ui.pages.journal.description, alternates: alternates("/insights") };
 }
 
 export default async function JournalPage({ params }: Params) {

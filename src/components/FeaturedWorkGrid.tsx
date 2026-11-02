@@ -27,9 +27,9 @@ export default function FeaturedWorkGrid({
           <h2
             className="display relative z-0 whitespace-nowrap leading-[0.82]"
             style={{ fontSize: "clamp(4.5rem, 15.5vw, 17rem)" }}
-            data-reveal
+            data-reveal="wipe"
           >
-            {title}
+            <span className="block">{title}</span>
           </h2>
           <div className="relative z-20 mb-[clamp(2.5rem,7.5vw,8.5rem)] hidden shrink-0 md:block" data-reveal>
             <GhostButton href={cta.href}>{cta.label}</GhostButton>

@@ -1,16 +1,25 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import type { Discipline, Project } from "@/content/types";
 import ProjectCard from "./ProjectCard";
 import { useLocale, useUI } from "@/i18n/LocaleProvider";
 
-const FILTERS: ("All" | Discipline)[] = ["All", "Campaigns", "Creative", "Community", "Digital", "Strategy"];
+const FILTERS: ("All" | Discipline)[] = ["All", "Campaigns", "Creative", "Community", "Digital", "Strategy", "Public Relations"];
 
 export default function WorkGrid({ projects }: { projects: Project[] }) {
   const locale = useLocale();
   const ui = useUI();
-  const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
+  const params = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  // The URL is the source of truth so pills elsewhere on the site can deep-link to a filter.
+  const raw = params.get("filter");
+  const filter: (typeof FILTERS)[number] = raw && (FILTERS as string[]).includes(raw) ? (raw as (typeof FILTERS)[number]) : "All";
+  const setFilter = (f: (typeof FILTERS)[number]) => {
+    router.replace(f === "All" ? pathname : `${pathname}?filter=${encodeURIComponent(f)}`, { scroll: false });
+  };
   const list = useMemo(
     () => (filter === "All" ? projects : projects.filter((p) => p.disciplines.includes(filter))),
     [filter, projects],

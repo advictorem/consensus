@@ -19,7 +19,7 @@ export default function JournalCard({
   const ui = getUI(locale);
   return (
     <article className={`group ${className}`} data-reveal>
-      <Link href={`/journal/${article.slug}`} className="block">
+      <Link href={`/insights/${article.slug}`} className="block">
         <div className={`media-zoom relative overflow-hidden bg-near-black ${featured ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
           <Image
             src={article.image.src}

@@ -29,7 +29,7 @@ export const FOOTER_NAV: NavItem[] = [
   { key: "whatWeDo", href: "/what-we-do" },
   { key: "work", href: "/work" },
   { key: "sectors", href: "/sectors" },
-  { key: "journal", href: "/journal" },
+  { key: "journal", href: "/insights" },
   { key: "contact", href: "/contact" },
   { key: "careers", href: SITE.careersUrl, external: true },
 ];

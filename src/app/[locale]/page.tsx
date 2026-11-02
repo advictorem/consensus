@@ -6,6 +6,7 @@ import FeaturedWorkGrid from "@/components/FeaturedWorkGrid";
 import CapabilityRows from "@/components/CapabilityRow";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import VennDiagram from "@/components/VennDiagram";
+import SplitLines from "@/components/SplitLines";
 import GhostButton from "@/components/GhostButton";
 import { CLIENT_LOGOS } from "@/content/clients";
 import { getHome, getCapabilities, getFeaturedProjects } from "@/content";
@@ -37,9 +38,7 @@ export default async function HomePage({ params }: Params) {
           <SectionHeader id="who" lines={HOME.who.lines} className="flex flex-col items-center" headingClassName="text-center" />
           <div className="mt-10 max-w-[62ch]">
             {HOME.who.paragraphs.map((p, i) => (
-              <p key={i} className={`t-lead text-white/85 ${i ? "mt-6" : ""}`} data-reveal style={{ ["--reveal-delay" as string]: `${200 + i * 120}ms` }}>
-                {p}
-              </p>
+              <SplitLines key={i} text={p} className={`t-lead text-white/85 ${i ? "mt-6" : ""}`} delay={0.15 + i * 0.35} />
             ))}
           </div>
           <div className="mt-10" data-reveal style={{ ["--reveal-delay" as string]: "450ms" }}>
@@ -57,7 +56,10 @@ export default async function HomePage({ params }: Params) {
       <section className="container-x section-y border-t border-white/10" aria-labelledby="capabilities">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <SectionHeader id="capabilities" eyebrow={HOME.capabilities.eyebrow} lines={HOME.capabilities.lines} copy={HOME.capabilities.intro} />
+            <SectionHeader id="capabilities" lines={HOME.capabilities.lines} />
+            <p className="mt-8 max-w-[52ch] text-[0.95rem] leading-relaxed text-white/75" data-reveal>
+              {HOME.capabilities.intro}
+            </p>
             <div className="mt-10 hidden lg:block" data-reveal>
               <GhostButton href={HOME.capabilities.cta.href}>{HOME.capabilities.cta.label}</GhostButton>
             </div>

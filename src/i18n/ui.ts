@@ -2,7 +2,7 @@ import type { Locale } from "./config";
 
 /** UI strings (navigation, labels, buttons, section headers not stored in content). */
 const en = {
-  nav: { home: "Home", about: "About", whatWeDo: "What We Do", work: "Work", sectors: "Sectors", journal: "Journal", contact: "Contact", careers: "Careers", cta: "Let's Talk" },
+  nav: { home: "Home", about: "About", whatWeDo: "What We Do", work: "Work", sectors: "Sectors", journal: "Insights", contact: "Contact", careers: "Careers", cta: "Let's Talk" },
   a11y: { skip: "Skip to content", openMenu: "Open menu", closeMenu: "Close menu", primaryNav: "Primary", mobileNav: "Mobile", footerNav: "Footer", home: "Consensus — home", language: "Language", switchTo: "Switch to Español" },
   common: {
     ourStory: "Our story",
@@ -38,6 +38,7 @@ const en = {
     genericError: "Something went wrong.",
     selectPlaceholder: "Select…",
     greatThings: "Great things start with a conversation.",
+    footerCta: "Whatever you're facing—a project that needs community support, a story that needs to be told, a brand that needs to break through—we bring the strategy, creativity, and technology to solve it and the marketing to make people care.",
     headquartered: "Headquartered in Southern California.",
     serving: "Serving clients across California and beyond.",
     follow: "Follow",
@@ -47,7 +48,7 @@ const en = {
     phone: "Phone",
     featured: "Featured",
     keepReading: "Keep reading",
-    moreFromJournal: ["More from", "the Journal."],
+    moreFromJournal: ["More", "insights."],
     moreFromStudio: ["More from", "the studio."],
     verifiedOutcomes: ["Verified", "outcomes."],
     impact: "Impact",
@@ -85,7 +86,7 @@ const en = {
     whatWeDoEyebrow: "What we do",
     ourWork: "Our work",
     sectorsEyebrow: "Sectors",
-    journalEyebrow: "The Journal",
+    journalEyebrow: "Insights",
     contactEyebrow: "Contact",
     whereWeAre: "Where we are",
     stayConnected: "Stay connected",
@@ -127,7 +128,7 @@ const en = {
     whatWeDo: { title: "What We Do", description: "Strategy, public relations, creative, digital, community engagement, and campaigns—connected thinking for communications that resonate and deliver results.", h1: ["We make", "connections count."], intro: "Complex challenges need connected thinking. We combine strategy, storytelling, technology, and real-world engagement to create communications that resonate and deliver results." },
     work: { title: "Work", description: "Selected campaigns, creative, community engagement, and strategic communications from Consensus.", h1: ["Work that", "moves people."], intro: "Campaigns, creative, and communications programs built on insight—and measured by what they change." },
     sectors: { title: "Sectors", description: "Public affairs, infrastructure, real estate, consumer and corporate brands, culture, education, and environment—complex challenges, clear thinking.", h1: ["Complex challenges.", "Clear thinking."], intro: "Every industry has its own challenges, stakeholders, and conversations. We bring the experience to understand what's at stake—and the strategy and creativity to move things forward." },
-    journal: { title: "Journal", description: "Fresh perspectives on communication, culture, creativity, technology, and the ideas shaping what's next.", h1: ["What's on", "our mind."], intro: "Fresh perspectives on communication, culture, creativity, technology, and the ideas shaping what's next." },
+    journal: { title: "Insights", description: "Fresh perspectives on communication, culture, creativity, technology, and the ideas shaping what's next.", h1: ["What's on", "our mind."], intro: "Fresh perspectives on communication, culture, creativity, technology, and the ideas shaping what's next." },
     contact: { title: "Contact", description: "Have a challenge, an idea, or a conversation worth starting? We'd love to hear it.", h1: ["Let's make", "something matter."], intro: "Have a challenge, an idea, or a conversation worth starting? We'd love to hear it." },
   },
 };
@@ -135,7 +136,7 @@ const en = {
 export type UI = typeof en;
 
 const es: UI = {
-  nav: { home: "Inicio", about: "Nosotros", whatWeDo: "Qué hacemos", work: "Trabajo", sectors: "Sectores", journal: "Journal", contact: "Contacto", careers: "Carreras", cta: "Hablemos" },
+  nav: { home: "Inicio", about: "Nosotros", whatWeDo: "Qué hacemos", work: "Trabajo", sectors: "Sectores", journal: "Insights", contact: "Contacto", careers: "Carreras", cta: "Hablemos" },
   a11y: { skip: "Ir al contenido", openMenu: "Abrir menú", closeMenu: "Cerrar menú", primaryNav: "Principal", mobileNav: "Móvil", footerNav: "Pie de página", home: "Consensus — inicio", language: "Idioma", switchTo: "Switch to English" },
   common: {
     ourStory: "Nuestra historia",
@@ -171,6 +172,7 @@ const es: UI = {
     genericError: "Algo salió mal.",
     selectPlaceholder: "Selecciona…",
     greatThings: "Las grandes cosas empiezan con una conversación.",
+    footerCta: "Sea cual sea el reto —un proyecto que necesita el apoyo de la comunidad, una historia que merece contarse o una marca que necesita destacar— aportamos la estrategia, la creatividad y la tecnología para resolverlo, y el marketing para que a la gente le importe.",
     headquartered: "Con sede en el sur de California.",
     serving: "Al servicio de clientes en toda California y más allá.",
     follow: "Síguenos",
@@ -180,7 +182,7 @@ const es: UI = {
     phone: "Teléfono",
     featured: "Destacado",
     keepReading: "Sigue leyendo",
-    moreFromJournal: ["Más del", "Journal."],
+    moreFromJournal: ["Más", "insights."],
     moreFromStudio: ["Más de", "nuestro estudio."],
     verifiedOutcomes: ["Resultados", "verificados."],
     impact: "Impacto",
@@ -218,7 +220,7 @@ const es: UI = {
     whatWeDoEyebrow: "Qué hacemos",
     ourWork: "Nuestro trabajo",
     sectorsEyebrow: "Sectores",
-    journalEyebrow: "El Journal",
+    journalEyebrow: "Insights",
     contactEyebrow: "Contacto",
     whereWeAre: "Dónde estamos",
     stayConnected: "Mantente conectado",
@@ -260,7 +262,7 @@ const es: UI = {
     whatWeDo: { title: "Qué hacemos", description: "Estrategia, relaciones públicas, creatividad, digital, participación comunitaria y campañas: pensamiento conectado para comunicaciones que resuenan y dan resultados.", h1: ["Hacemos que las", "conexiones cuenten."], intro: "Los retos complejos exigen pensamiento conectado. Combinamos estrategia, narrativa, tecnología y participación real para crear comunicaciones que resuenan y dan resultados." },
     work: { title: "Trabajo", description: "Campañas, creatividad, participación comunitaria y comunicación estratégica seleccionadas de Consensus.", h1: ["Trabajo que", "mueve a las personas."], intro: "Campañas, creatividad y programas de comunicación construidos sobre insights y medidos por lo que cambian." },
     sectors: { title: "Sectores", description: "Asuntos públicos, infraestructura, bienes raíces, marcas de consumo y corporativas, cultura, educación y medio ambiente: retos complejos, pensamiento claro.", h1: ["Retos complejos.", "Pensamiento claro."], intro: "Cada industria tiene sus propios retos, actores y conversaciones. Aportamos la experiencia para entender lo que está en juego, y la estrategia y creatividad para hacer avanzar las cosas." },
-    journal: { title: "Journal", description: "Perspectivas frescas sobre comunicación, cultura, creatividad, tecnología y las ideas que definen lo que viene.", h1: ["Lo que tenemos", "en mente."], intro: "Perspectivas frescas sobre comunicación, cultura, creatividad, tecnología y las ideas que definen lo que viene." },
+    journal: { title: "Insights", description: "Perspectivas frescas sobre comunicación, cultura, creatividad, tecnología y las ideas que definen lo que viene.", h1: ["Lo que tenemos", "en mente."], intro: "Perspectivas frescas sobre comunicación, cultura, creatividad, tecnología y las ideas que definen lo que viene." },
     contact: { title: "Contacto", description: "¿Tienes un reto, una idea o una conversación que vale la pena iniciar? Nos encantaría escucharla.", h1: ["Hagamos algo", "que importe."], intro: "¿Tienes un reto, una idea o una conversación que vale la pena iniciar? Nos encantaría escucharla." },
   },
 };

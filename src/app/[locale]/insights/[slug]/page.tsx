@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: a.title,
     description: a.excerpt,
-    alternates: alternates(`/journal/${a.slug}`),
+    alternates: alternates(`/insights/${a.slug}`),
     openGraph: {
       type: "article",
       publishedTime: a.date,
@@ -53,7 +53,7 @@ export default async function ArticlePage({ params }: Params) {
     author: a.author ? { "@type": "Person", name: a.author } : { "@type": "Organization", name: SITE.name },
     publisher: { "@type": "Organization", name: SITE.name },
     image: `${SITE.url}${a.image.src}`,
-    mainEntityOfPage: `${SITE.url}${localeHref(`/journal/${a.slug}`, locale)}`,
+    mainEntityOfPage: `${SITE.url}${localeHref(`/insights/${a.slug}`, locale)}`,
     inLanguage: locale,
   };
 
@@ -108,7 +108,7 @@ export default async function ArticlePage({ params }: Params) {
         <div className="mb-14 flex flex-col gap-8 border-t border-white/10 pt-16 md:flex-row md:items-end md:justify-between">
           <SectionHeader id="more" eyebrow={ui.common.keepReading} lines={ui.common.moreFromJournal} size="h3" />
           <div data-reveal>
-            <GhostButton href="/journal" size="sm">
+            <GhostButton href="/insights" size="sm">
               {ui.common.allArticles}
             </GhostButton>
           </div>

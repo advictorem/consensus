@@ -40,8 +40,8 @@ export const HOME_ES: typeof HOME = {
     cta: { label: "Cómo trabajamos", href: "/what-we-do" },
   },
   journal: {
-    eyebrow: "El Journal",
+    eyebrow: "Insights",
     lines: ["Ideas que vale", "la pena compartir."],
-    cta: { label: "Lea el Journal", href: "/journal" },
+    cta: { label: "Lea nuestros insights", href: "/insights" },
   },
 };

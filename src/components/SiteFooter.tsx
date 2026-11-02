@@ -12,31 +12,36 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
   const ui = getUI(locale);
   return (
     <footer className="relative overflow-hidden bg-black text-white">
-      {/* Atmospheric LA skyline, faded seamlessly into black */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[70vh] max-h-[760px] min-h-[420px]">
+      {/* Palm-lined LA skyline sits behind the wordmark at the very bottom, fading up into black */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[62vh] max-h-[720px] min-h-[380px]">
         <Image
           src="/images/la/palms-dtla-sunset.jpg"
           alt=""
           fill
           sizes="100vw"
-          className="object-cover object-[50%_35%] opacity-80 grayscale-[30%]"
+          className="object-cover object-[50%_60%] opacity-75 grayscale-[25%]"
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.55) 22%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.85) 78%, #000 100%)",
+              "linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.92) 18%, rgba(0,0,0,0.55) 42%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.6) 100%)",
           }}
         />
       </div>
 
-      <div className="container-x relative pt-[clamp(10rem,22vh,16rem)]">
-        {/* Main CTA */}
-        <Link href="/contact" className="group inline-block" aria-label={ui.nav.cta}>
-          <span className="display gradient-fill-hover block leading-[0.82]" style={{ fontSize: "var(--fs-footer)" }}>
-            {ui.nav.cta}.
-          </span>
-        </Link>
+      <div className="container-x relative pt-[clamp(6rem,14vh,10rem)]">
+        {/* Main CTA + supporting paragraph */}
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <Link href="/contact" className="group inline-block lg:col-span-7" aria-label={ui.nav.cta}>
+            <span className="display gradient-fill-hover block leading-[0.82]" style={{ fontSize: "var(--fs-footer)" }}>
+              {ui.nav.cta}.
+            </span>
+          </Link>
+          <p className="t-body max-w-[46ch] text-white/75 lg:col-span-5 lg:pb-[0.4em]" data-reveal>
+            {ui.common.footerCta}
+          </p>
+        </div>
 
         {/* Nav + contact + social */}
         <div className="mt-[clamp(4rem,8vw,7rem)] grid gap-12 border-t border-white/10 pt-12 md:grid-cols-12">
