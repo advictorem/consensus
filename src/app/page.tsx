@@ -1,69 +1,164 @@
 import Image from "next/image";
+import Link from "next/link";
+import VideoHero from "@/components/VideoHero";
+import SectionHeader from "@/components/SectionHeader";
+import FeaturedWorkGrid from "@/components/FeaturedWorkGrid";
+import CapabilityRows from "@/components/CapabilityRow";
+import ClientLogoGrid from "@/components/ClientLogoGrid";
+import JournalCard from "@/components/JournalCard";
+import GhostButton from "@/components/GhostButton";
+import { HOME } from "@/content/home";
+import { CAPABILITIES } from "@/content/capabilities";
+import { getFeaturedProjects } from "@/content/projects";
+import { CLIENT_LOGOS } from "@/content/clients";
+import { getLatestArticles } from "@/content/journal";
 
-export default function Home() {
+export default function HomePage() {
+  const featured = getFeaturedProjects(5);
+  const articles = getLatestArticles(3);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <VideoHero {...HOME.hero} />
+
+      {/* 02 — Who we are */}
+      <section className="container-x section-y" aria-labelledby="who">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-7">
+            <SectionHeader id="who" eyebrow={HOME.who.eyebrow} lines={HOME.who.lines} />
+          </div>
+          <div className="lg:col-span-4 lg:col-start-9 lg:pt-[18%]">
+            {HOME.who.paragraphs.map((p, i) => (
+              <p
+                key={i}
+                className={`t-body text-white/80 ${i ? "mt-6" : ""}`}
+                data-reveal
+                style={{ ["--reveal-delay" as string]: `${200 + i * 120}ms` }}
+              >
+                {p}
+              </p>
+            ))}
+            <div className="mt-10" data-reveal style={{ ["--reveal-delay" as string]: "450ms" }}>
+              <GhostButton href="/about" size="sm">
+                Our story
+              </GhostButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 03 — Featured work */}
+      <section className="container-x pb-[var(--section)]" aria-labelledby="work">
+        <div className="mb-16 flex flex-col gap-8 md:mb-20 md:flex-row md:items-end md:justify-between">
+          <SectionHeader id="work" eyebrow={HOME.work.eyebrow} lines={HOME.work.lines} />
+          <div className="hidden md:block" data-reveal>
+            <GhostButton href={HOME.work.cta.href} size="sm">
+              {HOME.work.cta.label}
+            </GhostButton>
+          </div>
+        </div>
+        <FeaturedWorkGrid projects={featured} />
+        <div className="mt-16 md:hidden" data-reveal>
+          <GhostButton href={HOME.work.cta.href}>{HOME.work.cta.label}</GhostButton>
+        </div>
+      </section>
+
+      {/* 04 — Capabilities */}
+      <section className="container-x section-y border-t border-white/10" aria-labelledby="capabilities">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <SectionHeader
+              id="capabilities"
+              eyebrow={HOME.capabilities.eyebrow}
+              lines={HOME.capabilities.lines}
+              copy={HOME.capabilities.intro}
+            />
+            <div className="mt-10 hidden lg:block" data-reveal>
+              <GhostButton href={HOME.capabilities.cta.href}>{HOME.capabilities.cta.label}</GhostButton>
+            </div>
+          </div>
+          <div className="lg:col-span-7">
+            <CapabilityRows items={CAPABILITIES} />
+            <div className="mt-12 lg:hidden" data-reveal>
+              <GhostButton href={HOME.capabilities.cta.href}>{HOME.capabilities.cta.label}</GhostButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 05 — Clients */}
+      <section className="container-x section-y border-t border-white/10" aria-labelledby="clients">
+        <div className="mb-20 grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <SectionHeader id="clients" eyebrow={HOME.clients.eyebrow} lines={HOME.clients.lines} />
+          </div>
+          <p className="t-body self-end text-white/75 lg:col-span-4 lg:col-start-9" data-reveal>
+            {HOME.clients.copy}
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <ClientLogoGrid logos={CLIENT_LOGOS} />
+      </section>
+
+      {/* 06 — The Consensus difference */}
+      <section className="relative isolate overflow-hidden border-t border-white/10" aria-labelledby="difference">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/la/griffith-observatory.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-[65%_50%] opacity-60 grayscale-[70%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
         </div>
-      </main>
-    </div>
+        <div className="container-x section-y">
+          <div className="grid gap-14 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <SectionHeader
+                id="difference"
+                eyebrow={HOME.difference.eyebrow}
+                lines={HOME.difference.lines}
+                copy={HOME.difference.copy}
+              />
+              <div className="mt-10" data-reveal>
+                <GhostButton href={HOME.difference.cta.href}>{HOME.difference.cta.label}</GhostButton>
+              </div>
+            </div>
+            <dl className="grid gap-8 self-end lg:col-span-4 lg:col-start-9">
+              {HOME.difference.points.map((p, i) => (
+                <div key={p.k} className="border-t border-white/15 pt-5" data-reveal style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}>
+                  <dt className="display text-[1.6rem] leading-none">{p.k}</dt>
+                  <dd className="mt-2 text-[0.95rem] text-white/70">{p.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      {/* 07 — Journal */}
+      <section className="container-x section-y border-t border-white/10" aria-labelledby="journal">
+        <div className="mb-16 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <SectionHeader id="journal" eyebrow={HOME.journal.eyebrow} lines={HOME.journal.lines} />
+          <div className="hidden md:block" data-reveal>
+            <GhostButton href={HOME.journal.cta.href} size="sm">
+              {HOME.journal.cta.label}
+            </GhostButton>
+          </div>
+        </div>
+        <div className="grid gap-12 md:grid-cols-3 md:gap-8">
+          {articles.map((a) => (
+            <JournalCard key={a.slug} article={a} />
+          ))}
+        </div>
+        <div className="mt-14 md:hidden">
+          <GhostButton href={HOME.journal.cta.href}>{HOME.journal.cta.label}</GhostButton>
+        </div>
+        <p className="sr-only">
+          <Link href="/journal">Read all journal entries</Link>
+        </p>
+      </section>
+    </>
   );
 }
