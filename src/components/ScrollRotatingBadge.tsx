@@ -44,8 +44,6 @@ export default function ScrollRotatingBadge() {
       const y = window.scrollY;
       const delta = Math.abs(y - lastY);
       lastY = y;
-      // Visibility: hide badge until the user has left the top of the hero a bit.
-      wrap.dataset.visible = y > 120 ? "true" : "false";
       if (reduce.matches) return;
       target += delta * 0.35; // degrees per pixel
       if (!running) {
@@ -65,7 +63,7 @@ export default function ScrollRotatingBadge() {
   return (
     <div
       ref={wrapRef}
-      data-visible="false"
+      data-visible="true"
       className="pointer-events-none fixed bottom-5 right-5 z-40 transition-[opacity,transform] duration-700 data-[visible=false]:translate-y-3 data-[visible=false]:opacity-0 md:bottom-8 md:right-8"
       aria-hidden="true"
     >

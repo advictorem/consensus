@@ -38,7 +38,7 @@ export default async function HomePage({ params }: Params) {
         <div className="mx-auto flex max-w-[78rem] flex-col items-center text-center">
           <SectionHeader id="who" lines={HOME.who.lines} className="flex flex-col items-center" headingClassName="text-center" />
           <div className="mt-12 w-full">
-            <ScrubText text={HOME.who.paragraphs.join(" ")} className="display mx-auto max-w-[70rem] text-[clamp(2rem,4.3vw,4.6rem)] leading-[1] text-center" />
+            <ScrubText text={HOME.who.paragraphs.join(" ")} className="display mx-auto max-w-[88rem] text-[clamp(1.35rem,2.55vw,2.75rem)] leading-[1.08] text-center" />
           </div>
           <div className="mt-10" data-reveal style={{ ["--reveal-delay" as string]: "450ms" }}>
             <GhostButton href={HOME.who.cta.href}>{HOME.who.cta.label}</GhostButton>
@@ -74,7 +74,7 @@ export default async function HomePage({ params }: Params) {
 
       {/* 05 — Clients */}
       <section className="container-x section-y" aria-labelledby="clients">
-        <h2 id="clients" className="display t-h3 mb-16 text-center" data-reveal="wipe">
+        <h2 id="clients" className="display mb-16 text-center text-[clamp(2.75rem,8vw,110px)] leading-[0.9]" data-reveal="wipe">
           <span className="block">{HOME.clients.label}</span>
         </h2>
         <ClientLogoGrid logos={CLIENT_LOGOS} locale={locale} />

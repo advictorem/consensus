@@ -1,17 +1,14 @@
 "use client";
 
-import Link from "@/components/Link";
 import { useState } from "react";
 import type { Capability } from "@/content/types";
-import { useUI } from "@/i18n/LocaleProvider";
 
 /**
- * Numbered-free editorial rows (accordion). The title is a link to the
- * capability's section on What We Do (gradient fill on hover); the +/–
- * control expands the summary and bulleted services. One open at a time.
+ * Capability accordion. Hovering a row opens it (pointer devices); click and
+ * keyboard still toggle for touch and assistive tech. The +/− control picks up
+ * the brand gradient on hover.
  */
 export default function CapabilityRows({ items }: { items: Capability[] }) {
-  const ui = useUI();
   const [open, setOpen] = useState<string | null>(items[0]?.slug ?? null);
 
   return (
@@ -20,25 +17,30 @@ export default function CapabilityRows({ items }: { items: Capability[] }) {
         const isOpen = open === c.slug;
         const panelId = `cap-${c.slug}`;
         return (
-          <li key={c.slug} className="border-b border-white/12" data-reveal>
-            <div className="grid grid-cols-[1fr_auto] items-center gap-x-5 py-7 md:gap-x-8 md:py-9">
-              <Link href={`/what-we-do#${c.slug}`} className="display gradient-fill-hover t-h3 leading-[0.95]">
-                {c.title}
-              </Link>
-              <button
-                type="button"
-                aria-expanded={isOpen}
-                aria-controls={panelId}
-                aria-label={`${isOpen ? ui.a11y.closeMenu : ui.a11y.openMenu}: ${c.title}`}
-                onClick={() => setOpen(isOpen ? null : c.slug)}
-                className="relative flex h-10 w-10 items-center justify-center"
-              >
-                <span aria-hidden="true" className="relative block h-6 w-6">
-                  <span className="absolute left-0 top-1/2 h-px w-full bg-white" />
-                  <span className={`absolute left-1/2 top-0 h-full w-px bg-white transition-transform duration-500 ${isOpen ? "scale-y-0" : "scale-y-100"}`} />
-                </span>
-              </button>
-            </div>
+          <li
+            key={c.slug}
+            className="group border-b border-white/12"
+            data-reveal
+            onMouseEnter={() => setOpen(c.slug)}
+          >
+            <button
+              type="button"
+              aria-expanded={isOpen}
+              aria-controls={panelId}
+              onClick={() => setOpen(isOpen ? null : c.slug)}
+              onFocus={() => setOpen(c.slug)}
+              className="grid w-full grid-cols-[1fr_auto] items-center gap-x-5 py-7 text-left md:gap-x-8 md:py-9"
+            >
+              <span className="display gradient-fill-hover t-h3 leading-[0.95]">{c.title}</span>
+              <span aria-hidden="true" className="relative block h-6 w-6 shrink-0">
+                <span className="accordion-bar absolute left-0 top-1/2 h-[2px] w-full -translate-y-1/2" />
+                <span
+                  className={`accordion-bar absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 transition-transform duration-500 ${
+                    isOpen ? "scale-y-0" : "scale-y-100"
+                  }`}
+                />
+              </span>
+            </button>
             <div
               id={panelId}
               className="grid transition-[grid-template-rows] duration-700 ease-[var(--ease-out)]"

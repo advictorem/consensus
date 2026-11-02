@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { markPreloaderDone } from "@/lib/preloader-gate";
 
 const KEY = "consensus-preloaded";
 const SHOW_MS = 2200;
@@ -21,11 +22,18 @@ export default function Preloader() {
     } catch {}
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const t0 = window.setTimeout(() => {
-      if (seen || reduce) setPhase("done");
+      if (seen || reduce) {
+        setPhase("done");
+        markPreloaderDone();
+      }
     }, 0);
     if (seen || reduce) return () => window.clearTimeout(t0);
     document.documentElement.style.overflow = "hidden";
-    const t1 = window.setTimeout(() => setPhase("fade"), SHOW_MS);
+    // Hand off at the start of the fade so the hero animates in through it.
+    const t1 = window.setTimeout(() => {
+      setPhase("fade");
+      markPreloaderDone();
+    }, SHOW_MS);
     const t2 = window.setTimeout(() => {
       setPhase("done");
       document.documentElement.style.overflow = "";

@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { onPreloaderDone } from "@/lib/preloader-gate";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,67 +11,79 @@ const MAIN = "M923.26,224.13c20.64-5.99,41.15-20.09,59.77-37.64-3.25,18.33,5.34,
 const DOT = "M166.77,99.91l-.47.64s.09.14.24.34c.08-.33.15-.65.23-.99";
 
 /**
- * Cursive "Consensus" wordmark that writes itself in as it scrolls into view.
- * A clip rectangle sweeps left→right revealing the solid white fill, so the
- * letters appear to be inked in order (outline pass removed by request).
+ * Cursive "Consensus" wordmark that writes itself in: a clip rectangle sweeps
+ * left→right revealing the solid fill, so the letters appear to be inked in
+ * order. `trigger="scroll"` plays when it enters the viewport (footer);
+ * `trigger="preloader"` plays once the preloader clears (header).
  * Respects prefers-reduced-motion (renders static).
  */
-export default function WordmarkReveal() {
+export default function WordmarkReveal({
+  trigger = "scroll",
+  duration = 2.4,
+  className = "h-auto w-full select-none",
+  title = "Consensus",
+}: {
+  trigger?: "scroll" | "preloader";
+  duration?: number;
+  className?: string;
+  title?: string;
+}) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const uid = useId().replace(/:/g, "");
+  const clipId = `wm-clip-${uid}`;
 
   useEffect(() => {
     const svg = svgRef.current;
     if (!svg) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const stroke = svg.querySelector<SVGPathElement>("[data-stroke]");
-    const dotStroke = svg.querySelector<SVGPathElement>("[data-stroke-dot]");
     const clip = svg.querySelector<SVGRectElement>("[data-clip]");
     const fills = svg.querySelectorAll<SVGPathElement>("[data-fill]");
-    if (!stroke || !clip || !dotStroke) return;
+    if (!clip) return;
 
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
       gsap.set(clip, { attr: { width: 1300 } });
-      gsap.set([stroke, dotStroke], { opacity: 0 });
       gsap.set(fills, { opacity: 1 });
       return;
     }
 
-    gsap.set([stroke, dotStroke], { opacity: 0 });
     gsap.set(clip, { attr: { width: 0 } });
     gsap.set(fills, { opacity: 1 });
 
-    // Fill sweeps in left→right as if inked; no outline pass.
-    const tl = gsap.timeline({
-      scrollTrigger: { trigger: svg, start: "top 85%", once: true },
-      defaults: { ease: "power1.inOut" },
-    });
-    tl.to(clip, { attr: { width: 1300 }, duration: 2.4 }, 0);
+    let tl: gsap.core.Timeline | null = null;
+    const play = () => {
+      tl = gsap.timeline({ defaults: { ease: "power1.inOut" } });
+      tl.to(clip, { attr: { width: 1300 }, duration }, 0);
+    };
+
+    let cancel: (() => void) | null = null;
+    if (trigger === "preloader") {
+      cancel = onPreloaderDone(play);
+    } else {
+      tl = gsap.timeline({
+        scrollTrigger: { trigger: svg, start: "top 85%", once: true },
+        defaults: { ease: "power1.inOut" },
+      });
+      tl.to(clip, { attr: { width: 1300 }, duration }, 0);
+    }
 
     return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
+      cancel?.();
+      tl?.scrollTrigger?.kill();
+      tl?.kill();
     };
-  }, []);
+  }, [trigger, duration]);
 
   return (
-    <svg
-      ref={svgRef}
-      viewBox="0 0 1293.89 372.42"
-      className="h-auto w-full select-none"
-      role="img"
-      aria-label="Consensus"
-    >
+    <svg ref={svgRef} viewBox="0 0 1293.89 372.42" className={className} role="img" aria-label={title}>
       <defs>
-        <clipPath id="wm-clip">
+        <clipPath id={clipId}>
           <rect data-clip x="0" y="0" width="1300" height="372.42" />
         </clipPath>
       </defs>
-      <g clipPath="url(#wm-clip)">
-        <path data-fill d={MAIN} fill="#fff" />
-        <path data-fill d={DOT} fill="#fff" />
+      <g clipPath={`url(#${clipId})`}>
+        <path data-fill d={MAIN} fill="currentColor" />
+        <path data-fill d={DOT} fill="currentColor" />
       </g>
-      <path data-stroke d={MAIN} fill="none" stroke="#fff" strokeWidth="2.5" strokeLinejoin="round" opacity="0" />
-      <path data-stroke-dot d={DOT} fill="#fff" opacity="0" />
     </svg>
   );
 }

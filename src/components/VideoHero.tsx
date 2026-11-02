@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import GhostButton from "./GhostButton";
 import AnimatedHeading from "./AnimatedHeading";
+import ScrollFadeParallax from "./ScrollFadeParallax";
 import { useUI } from "@/i18n/LocaleProvider";
 
 export default function VideoHero({
@@ -79,7 +80,7 @@ export default function VideoHero({
           lines={lines}
           className={`display t-hero !leading-[0.74] max-w-[16ch] ${lines.join(" ").length > 24 ? "t-hero--long" : ""}`}
         />
-        <div className="mt-8 flex max-w-6xl flex-col gap-8 md:mt-10">
+        <ScrollFadeParallax className="mt-8 flex max-w-6xl flex-col gap-8 md:mt-10">
           <p
             className="max-w-[36ch] text-[clamp(1.25rem,1.7vw,2.1rem)] leading-[1.35] text-white/85"
             data-reveal
@@ -96,18 +97,16 @@ export default function VideoHero({
               {primary.label}
             </GhostButton>
           </div>
-        </div>
+        </ScrollFadeParallax>
       </div>
 
       {/* Scroll indicator */}
       <div
-        className="absolute bottom-8 right-[var(--gutter)] hidden items-center gap-3 md:flex"
+        className="scroll-cue absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex"
         aria-hidden="true"
-        data-reveal
-        style={{ ["--reveal-delay" as string]: "1100ms" }}
       >
-        <span className="t-label text-white/50">{ui.common.scroll}</span>
-        <span className="relative block h-12 w-px overflow-hidden bg-white/20">
+        <span className="t-label text-white/55">{ui.common.scroll}</span>
+        <span className="relative block h-12 w-px overflow-hidden bg-white/25">
           <span className="scroll-line absolute inset-x-0 top-0 h-1/2 bg-white" />
         </span>
       </div>

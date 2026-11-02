@@ -158,6 +158,18 @@ strong, b { font-weight: 700; }
 .faint { color: var(--faint); }
 .rule  { border-color: var(--rule); }
 
+/* Hero scroll cue: fades in once the preloader clears (it sits inside the
+   reveal observer's bottom margin, so it can't rely on intersection). */
+.scroll-cue { opacity: 0; }
+@keyframes cueIn { to { opacity: 1; } }
+.preloaded .scroll-cue { animation: cueIn 0.8s var(--ease-out) 1.1s forwards; }
+@media (prefers-reduced-motion: reduce) { .scroll-cue { opacity: 1; } .preloaded .scroll-cue { animation: none; } }
+
+/* Accordion +/- bars: white, brand gradient on row hover/focus */
+.accordion-bar { background: var(--white); transition: background 0.45s var(--ease-out); }
+.group:hover .accordion-bar,
+.group:focus-within .accordion-bar { background: var(--brand-gradient); }
+
 .gradient-fill-hover {
   color: var(--white);
   background: var(--brand-gradient);
