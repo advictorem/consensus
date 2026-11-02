@@ -12,7 +12,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "california-lottery",
     client: "California Lottery",
-    title: "You Play,\nSchools Win.",
+    title: "Real People. Real Stories.\nReal Impact.",
     descriptor: "A statewide campaign connecting communities with the real impact of Lottery contributions on public education.",
     disciplines: ["Campaigns", "Creative", "Digital"],
     tags: ["Integrated Campaign", "Public Awareness", "Creative Storytelling", "Digital Media"],
@@ -20,7 +20,7 @@ export const PROJECTS: Project[] = [
     featuredOrder: 1,
     size: "xl",
     hero: { src: "/images/work/california-lottery.jpg", alt: "California Lottery 'You Play, Schools Win' campaign: five smiling educators and students on a blue calottery background", position: "50% 40%" },
-    thumb: { src: "/images/work/california-lottery.jpg", alt: "California Lottery 'You Play, Schools Win' campaign portraits", position: "50% 40%" },
+    thumb: { src: "/media/lottery-football-poster.jpg", alt: "California Lottery campaign film: a high-school football scene", position: "50% 40%", video: "/media/lottery-football.mp4" },
     intro:
       "Behind every contribution is a story worth telling. We brought the California Lottery's commitment to public education to life through authentic voices, real classrooms, and a statewide campaign designed to connect communities with the impact of their schools.",
     challenge:
@@ -106,7 +106,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "imagine-town-center",
     client: "City of Aliso Viejo",
-    title: "Imagine\nTown Center",
+    title: "Imagining a\nCity's Future",
     descriptor: "Community outreach and a video campaign that invited residents into the design charrette for the Town Center master plan.",
     disciplines: ["Community", "Creative", "Digital"],
     tags: ["Community Outreach", "Video", "Planning", "Public Participation"],

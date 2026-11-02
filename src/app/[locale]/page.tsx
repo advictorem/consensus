@@ -34,21 +34,17 @@ export default async function HomePage({ params }: Params) {
 
       {/* 02 — Who we are */}
       <section className="container-x section-y" aria-labelledby="who">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-7">
-            <SectionHeader id="who" eyebrow={HOME.who.eyebrow} lines={HOME.who.lines} />
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9 lg:pt-[18%]">
+        <div className="mx-auto flex max-w-[62rem] flex-col items-center text-center">
+          <SectionHeader id="who" lines={HOME.who.lines} className="flex flex-col items-center" headingClassName="text-center" />
+          <div className="mt-10 max-w-[62ch]">
             {HOME.who.paragraphs.map((p, i) => (
-              <p key={i} className={`t-body text-white/80 ${i ? "mt-6" : ""}`} data-reveal style={{ ["--reveal-delay" as string]: `${200 + i * 120}ms` }}>
+              <p key={i} className={`t-lead text-white/85 ${i ? "mt-6" : ""}`} data-reveal style={{ ["--reveal-delay" as string]: `${200 + i * 120}ms` }}>
                 {p}
               </p>
             ))}
-            <div className="mt-10" data-reveal style={{ ["--reveal-delay" as string]: "450ms" }}>
-              <GhostButton href="/about" size="sm">
-                {ui.common.ourStory}
-              </GhostButton>
-            </div>
+          </div>
+          <div className="mt-10" data-reveal style={{ ["--reveal-delay" as string]: "450ms" }}>
+            <GhostButton href={HOME.who.cta.href}>{HOME.who.cta.label}</GhostButton>
           </div>
         </div>
       </section>

@@ -45,7 +45,7 @@ export default function WorkGrid({ projects }: { projects: Project[] }) {
           const cls = pattern === 0 ? "md:col-span-12" : pattern === 1 ? "md:col-span-7" : "md:col-span-5 md:mt-20";
           const aspect = pattern === 0 ? "aspect-[16/9] md:aspect-[21/9]" : pattern === 1 ? "aspect-[4/3]" : "aspect-[4/5]";
           const sizes = pattern === 0 ? "100vw" : pattern === 1 ? "(min-width:768px) 58vw, 100vw" : "(min-width:768px) 42vw, 100vw";
-          return <ProjectCard locale={locale} key={p.slug} project={p} index={i} aspect={aspect} sizes={sizes} className={cls} priority={i === 0} />;
+          return <ProjectCard locale={locale} key={p.slug} project={p} index={i} aspect={aspect} sizes={sizes} className={cls} priority={i === 0} delay={(i % 3) * 180} />;
         })}
         {list.length === 0 && <p className="text-white/60 md:col-span-12">{ui.common.noProjects}</p>}
       </div>

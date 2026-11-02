@@ -59,13 +59,13 @@ export default function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 aria-current={isActive(item.href) ? "page" : undefined}
-                className="link-line t-label !text-[1rem] text-white/90 transition-colors hover:text-white"
+                className="link-line t-label !text-[1.25rem] text-white/90 transition-colors hover:text-white"
               >
                 {ui.nav[item.key]}
               </Link>
             ))}
             <LanguageSwitcher className="ml-2" size="md" />
-            <GhostButton href={CTA.href} arrow={false} className="ml-1">
+            <GhostButton href={CTA.href} arrow={false} className="btn--nav ml-1">
               {ui.nav.cta}
             </GhostButton>
           </nav>

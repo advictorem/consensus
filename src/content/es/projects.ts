@@ -5,7 +5,7 @@ export const PROJECTS_ES: Record<
   Partial<Pick<Project, "title" | "descriptor" | "tags" | "intro" | "challenge" | "strategy" | "execution" | "outcomes" | "outcomesNote">>
 > = {
   "california-lottery": {
-    title: "Tú juegas,\nlas escuelas ganan.",
+    title: "Personas reales. Historias reales.\nImpacto real.",
     descriptor: "Una campaña estatal que conecta a las comunidades con el impacto real de las contribuciones de la Lotería a la educación pública.",
     tags: ["Campaña integrada", "Concientización pública", "Storytelling creativo", "Medios digitales"],
     intro:
@@ -61,7 +61,7 @@ export const PROJECTS_ES: Record<
     execution: "Respuesta ante la crisis, desarrollo de mensajes, materiales de información pública, comunicación comunitaria y participación de grupos de interés.",
   },
   "imagine-town-center": {
-    title: "Imagine\nTown Center",
+    title: "Imaginar el futuro\nde una ciudad",
     descriptor: "Alcance comunitario y una campaña en video que invitó a los residentes a participar en el taller de diseño del plan maestro del Town Center.",
     tags: ["Alcance comunitario", "Video", "Planeación", "Participación pública"],
     intro:

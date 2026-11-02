@@ -53,6 +53,7 @@ export default function FeaturedWorkGrid({
               aspect={even ? "aspect-[4/3]" : "aspect-[3/4] md:aspect-[4/5]"}
               sizes={even ? "(min-width: 768px) 58vw, 100vw" : "(min-width: 768px) 42vw, 100vw"}
               className={even ? "md:col-span-7" : "md:col-span-5 md:mt-24"}
+              delay={(i % 2) * 220}
             />
           );
         })}

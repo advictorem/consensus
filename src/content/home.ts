@@ -5,12 +5,12 @@ export const HOME = {
     primary: { label: "Explore our work", href: "#work" },
   },
   who: {
-    eyebrow: "This is Consensus",
-    lines: ["Connection", "changes", "everything."],
+    lines: ["We are", "Consensus."],
     paragraphs: [
       "Every brand has a story. Every community has a voice. And every meaningful idea deserves to be heard.",
-      "We work at the intersection of people, purpose, and possibility—turning complex challenges into clear narratives, authentic relationships, and communications that move things forward.",
+      "We work at the intersection of people, purpose, and possibility turning complex challenges into clear narratives, authentic relationships, and communications that move things forward.",
     ],
+    cta: { label: "About Us", href: "/about" },
   },
   work: {
     title: "Our Work",
