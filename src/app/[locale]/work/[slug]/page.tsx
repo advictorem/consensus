@@ -5,6 +5,7 @@ import InteriorHero from "@/components/InteriorHero";
 import SectionHeader from "@/components/SectionHeader";
 import ProjectCard from "@/components/ProjectCard";
 import VimeoEmbed from "@/components/VimeoEmbed";
+import FilmPlayer from "@/components/FilmPlayer";
 import GhostButton from "@/components/GhostButton";
 import { PROJECTS } from "@/content/projects";
 import { getProject, getProjects } from "@/content";
@@ -84,6 +85,12 @@ export default async function ProjectPage({ params }: Params) {
         {p.strategy && <Block label={ui.common.strategyInsight}>{p.strategy}</Block>}
         {p.execution && <Block label={ui.common.creativeExecution}>{p.execution}</Block>}
       </section>
+
+      {p.film && (
+        <section className="container-x py-12" aria-label={ui.common.campaignVideo}>
+          <FilmPlayer src={p.film.src} poster={p.film.poster} title={p.film.title} />
+        </section>
+      )}
 
       {p.vimeo && p.vimeo.length > 0 && (
         <section className="container-x py-12" aria-label={ui.common.campaignVideo}>

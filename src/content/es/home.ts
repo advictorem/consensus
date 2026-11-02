@@ -10,7 +10,7 @@ export const HOME_ES: typeof HOME = {
     lines: ["Somos Consensus."],
     paragraphs: [
       "Toda marca tiene una historia. Toda comunidad tiene una voz. Y toda idea con sentido merece ser escuchada.",
-      "Conectamos personas, propósito e ideas a través de narrativas poderosas, relaciones auténticas y comunicaciones que hacen avanzar a las personas.",
+      "Conectamos personas, propósito e ideas a través de narrativas poderosas, relaciones auténticas y comunicaciones\nque hacen avanzar a las personas.",
     ],
     cta: { label: "Nosotros", href: "/about" },
   },

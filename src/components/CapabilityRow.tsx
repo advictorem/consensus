@@ -50,7 +50,7 @@ export default function CapabilityRows({ items }: { items: Capability[] }) {
               <div className="overflow-hidden">
                 <div className="grid gap-8 pb-10 md:grid-cols-12 md:gap-x-8 md:pb-12">
                   <p className="t-body text-white/80 md:col-span-6">{c.short}</p>
-                  <ul className="list-disc space-y-1.5 pl-5 text-[1rem] font-bold text-white/90 marker:text-white/40 md:col-span-5 md:col-start-8">
+                  <ul className="list-disc space-y-1.5 pl-5 text-[1rem] font-bold text-white/90 marker:text-[#3cc1ef] md:col-span-5 md:col-start-8">
                     {c.services.map((s) => (
                       <li key={s}>{s}</li>
                     ))}

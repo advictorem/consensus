@@ -13,7 +13,8 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export default function ScrubText({ text, className = "" }: { text: string; className?: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
-  const words = text.split(/\s+/).filter(Boolean);
+  // "\n" in the copy is a hard line break; everything else wraps naturally.
+  const words = text.split(/(\n)|\s+/).filter(Boolean);
 
   useEffect(() => {
     const el = ref.current;
@@ -44,12 +45,16 @@ export default function ScrubText({ text, className = "" }: { text: string; clas
 
   return (
     <p ref={ref} className={className} aria-label={text}>
-      {words.map((w, i) => (
-        <span key={i} data-w aria-hidden="true" className="inline-block will-change-[opacity]">
-          {w}
-          {i < words.length - 1 ? " " : ""}
-        </span>
-      ))}
+      {words.map((w, i) =>
+        w === "\n" ? (
+          <br key={i} aria-hidden="true" />
+        ) : (
+          <span key={i} data-w aria-hidden="true" className="inline-block will-change-[opacity]">
+            {w}
+            {i < words.length - 1 && words[i + 1] !== "\n" ? " " : ""}
+          </span>
+        ),
+      )}
     </p>
   );
 }

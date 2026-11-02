@@ -45,6 +45,8 @@ export type Project = {
   outcomes?: { value: string; label: string; note?: string }[];
   outcomesNote?: string;
   vimeo?: { showcase?: string; videoId?: string; title: string }[];
+  /** Self-hosted campaign film, played from our own origin (no third party). */
+  film?: { src: string; poster: string; title: string };
   gallery?: Media[];
   related?: string[];
   /** Internal: items the client must approve before publishing. */

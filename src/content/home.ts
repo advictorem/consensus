@@ -8,7 +8,8 @@ export const HOME = {
     lines: ["We are Consensus."],
     paragraphs: [
       "Every brand has a story. Every community has a voice. And every meaningful idea deserves to be heard.",
-      "We connect people, purpose, and ideas through powerful storytelling, authentic relationships, and communications that move people forward.",
+      // The "\n" is a hard break: it keeps the closing phrase on its own line.
+      "We connect people, purpose, and ideas through powerful storytelling, authentic relationships, and communications\nthat move people forward.",
     ],
     cta: { label: "About Us", href: "/about" },
   },

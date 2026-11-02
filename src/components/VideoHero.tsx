@@ -95,10 +95,8 @@ export default function VideoHero({
         className="scroll-cue absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex"
         aria-hidden="true"
       >
-        {/* Type matches the ghost buttons: display face, 300, 0.1em tracking. */}
-        <span className="display text-[1.05rem] font-light uppercase leading-none tracking-[0.1em] text-white/70">
-          {ui.common.scroll}
-        </span>
+        {/* Same type as the header nav links: 20px, light, full white. */}
+        <span className="t-label !text-[1.25rem] text-white">{ui.common.scroll}</span>
         <span className="relative block h-12 w-px overflow-hidden bg-white/25">
           <span className="scroll-line absolute inset-x-0 top-0 h-1/2 bg-white" />
         </span>

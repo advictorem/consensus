@@ -122,19 +122,18 @@ export const PROJECTS: Project[] = [
       src: "/images/work/metro-world-cup.jpg",
       alt: "Fans in national team jerseys riding a Metro bus in Los Angeles",
       position: "50% 42%",
-      // Hover preview. The Vimeo original is privacy-restricted, so no file
-      // could be pulled; drop an MP4 here and the card plays it automatically.
-      // video: "/media/metro-world-cup.mp4",
+      video: "/media/metro-world-cup.mp4",
     },
     intro:
       "Los Angeles shows up for the world's biggest sporting event in every language it speaks. Consensus worked with Metro to reach the city's fan communities where they already gather—and to make taking transit to the matches the obvious way to get there.",
-    vimeo: [{ videoId: "1185671904", title: "Metro — This Is How LA Shows Up" }],
+    film: {
+      src: "/media/metro-world-cup-film.mp4",
+      poster: "/images/work/metro-world-cup.jpg",
+      title: "This Is How LA Shows Up",
+    },
     related: ["california-lottery", "imagine-town-center"],
     approvals: [
-      "Confirm Consensus' role and scope on this campaign (the Vimeo upload is credited to Friendly Filmworks)",
       "Supply campaign narrative — challenge, strategy, execution — and any approved results",
-      "Supply an MP4 for the tile hover preview, or whitelist the site domains on the Vimeo video's privacy settings",
-      "Confirm clearance for the campaign still and film",
     ],
   },
   {

@@ -123,7 +123,7 @@ const en = {
     "Public Relations": "Public Relations",
   } as Record<string, string>,
   pages: {
-    home: { title: "Consensus — Meaningful Connections. Measurable Impact.", description: "Consensus is an independent public relations, strategic communications, community engagement, marketing, and creative agency headquartered in Southern California. Four decades of experience. New perspectives on what's next." },
+    home: { title: "Consensus - Award-Winning Public Relations & Community Engagement Firm", description: "Consensus is an independent public relations, strategic communications, community engagement, marketing, and creative agency headquartered in Southern California. Four decades of experience. New perspectives on what's next." },
     about: { title: "Who We Are", description: "Since 1986, Consensus has helped organizations navigate change, earn trust, and inspire action. Four decades of experience. One belief in the power of people." },
     whatWeDo: { title: "Services", description: "Strategy, public relations, creative, digital, community engagement, and campaigns—connected thinking for communications that resonate and deliver results.", h1: ["We make", "connections count."], intro: "Complex challenges need connected thinking. We combine strategy, storytelling, technology, and real-world engagement to create communications that resonate and deliver results." },
     work: { title: "What We Do", description: "Selected campaigns, creative, community engagement, and strategic communications from Consensus.", h1: ["Work that", "moves people."], intro: "Campaigns, creative, and communications programs built on insight—and measured by what they change." },
@@ -257,7 +257,7 @@ const es: UI = {
     "Public Relations": "Relaciones públicas",
   },
   pages: {
-    home: { title: "Consensus — Conexiones significativas. Impacto medible.", description: "Consensus es una agencia independiente de relaciones públicas, comunicación estratégica, participación comunitaria, marketing y creatividad con sede en el sur de California. Cuatro décadas de experiencia. Nuevas perspectivas sobre lo que viene." },
+    home: { title: "Consensus - Relaciones Públicas y Participación Comunitaria Galardonadas", description: "Consensus es una agencia independiente de relaciones públicas, comunicación estratégica, participación comunitaria, marketing y creatividad con sede en el sur de California. Cuatro décadas de experiencia. Nuevas perspectivas sobre lo que viene." },
     about: { title: "Quiénes somos", description: "Desde 1986, Consensus ayuda a las organizaciones a navegar el cambio, ganarse la confianza e inspirar la acción. Cuatro décadas de experiencia. Una convicción: el poder de las personas." },
     whatWeDo: { title: "Servicios", description: "Estrategia, relaciones públicas, creatividad, digital, participación comunitaria y campañas: pensamiento conectado para comunicaciones que resuenan y dan resultados.", h1: ["Hacemos que las", "conexiones cuenten."], intro: "Los retos complejos exigen pensamiento conectado. Combinamos estrategia, narrativa, tecnología y participación real para crear comunicaciones que resuenan y dan resultados." },
     work: { title: "Qué hacemos", description: "Campañas, creatividad, participación comunitaria y comunicación estratégica seleccionadas de Consensus.", h1: ["Trabajo que", "mueve a las personas."], intro: "Campañas, creatividad y programas de comunicación construidos sobre insights y medidos por lo que cambian." },

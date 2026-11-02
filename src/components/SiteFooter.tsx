@@ -54,7 +54,7 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="link-line t-label inline-flex items-center gap-2 text-white/80 hover:text-white"
+                      className="link-line t-label !text-[1.25rem] inline-flex items-center gap-2 text-white/80 hover:text-white"
                     >
                       {ui.nav[item.key]}
                       <span aria-hidden="true" className="text-[0.7em] opacity-60">
@@ -64,7 +64,7 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
                   </li>
                 ) : (
                   <li key={item.href}>
-                    <Link href={item.href} className="link-line t-label text-white/80 hover:text-white">
+                    <Link href={item.href} className="link-line t-label !text-[1.25rem] text-white/80 hover:text-white">
                       {ui.nav[item.key]}
                     </Link>
                   </li>
