@@ -27,7 +27,7 @@ export default async function HomePage({ params }: Params) {
   const locale: Locale = isLocale(raw) ? raw : "en";
   const HOME = getHome(locale);
   const capabilities = getCapabilities(locale);
-  const featured = getFeaturedProjects(locale, 5);
+  const featured = getFeaturedProjects(locale, 6);
 
   return (
     <>

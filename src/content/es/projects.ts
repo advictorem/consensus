@@ -60,6 +60,14 @@ export const PROJECTS_ES: Record<
       "Liderar con transparencia y consistencia: un solo conjunto de hechos, comunicado a cada grupo de interés, coordinado con los reguladores y el equipo legal, y actualizado conforme evolucionaba la situación.",
     execution: "Respuesta ante la crisis, desarrollo de mensajes, materiales de información pública, comunicación comunitaria y participación de grupos de interés.",
   },
+  "metro-world-cup": {
+    title: "Promoviendo el evento deportivo\nmás grande del mundo",
+    descriptor:
+      "Una campaña en toda la ciudad que invita a las múltiples culturas y comunidades de aficionados de Los Ángeles a tomar el Metro para ir a los partidos.",
+    tags: ["Campaña integrada", "Concientización pública", "Transporte público", "Storytelling creativo"],
+    intro:
+      "Los Ángeles se hace presente en el evento deportivo más grande del mundo en todos los idiomas que habla. Consensus trabajó con Metro para llegar a las comunidades de aficionados de la ciudad donde ya se reúnen, y para que tomar el transporte público hacia los partidos fuera la manera obvia de llegar.",
+  },
   "imagine-town-center": {
     title: "Imaginar el futuro\nde una ciudad",
     descriptor: "Alcance comunitario y una campaña en video que invitó a los residentes a participar en el taller de diseño del plan maestro del Town Center.",
