@@ -4,8 +4,7 @@ export const HOME_ES: typeof HOME = {
   hero: {
     lines: ["Crear sentido.", "Mover a las personas."],
     copy: "Unimos estrategia, creatividad y tecnología para contar historias que conectan a las personas, generan confianza e inspiran a la acción.",
-    primary: { label: "Explore nuestro trabajo", href: "/work" },
-    secondary: { label: "Conózcanos", href: "/about" },
+    primary: { label: "Explora nuestro trabajo", href: "#work" },
   },
   who: {
     eyebrow: "Esto es Consensus",
@@ -16,8 +15,7 @@ export const HOME_ES: typeof HOME = {
     ],
   },
   work: {
-    eyebrow: "Trabajo seleccionado",
-    lines: ["Ideas", "hechas realidad."],
+    title: "Nuestro trabajo",
     cta: { label: "Ver todo el trabajo", href: "/work" },
   },
   capabilities: {
@@ -29,12 +27,12 @@ export const HOME_ES: typeof HOME = {
   },
   clients: {
     eyebrow: "En buena compañía",
-    lines: ["La confianza se gana.", "Nunca se da por hecha."],
+    lines: ["Con quiénes", "trabajamos."],
     copy: "Desde marcas globales hasta instituciones públicas, hemos colaborado con organizaciones que dan forma a los lugares donde vivimos, los productos que usamos y las conversaciones que hacen avanzar a nuestro mundo.",
   },
   difference: {
     eyebrow: "Por qué Consensus",
-    lines: ["Construidos sobre la confianza.", "Preparados para", "lo que viene."],
+    lines: ["Hechos para", "lo que sigue."],
     copy: "La experiencia nos da perspectiva. La curiosidad nos mantiene en movimiento. Unimos un pensamiento estratégico experimentado con talento creativo diverso, tecnología inteligente y la convicción compartida de que las ideas más fuertes nacen de entender a las personas.",
     points: [
       { k: "Experiencia", v: "Cuatro décadas navegando retos de comunicación complejos." },

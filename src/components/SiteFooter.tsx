@@ -4,8 +4,9 @@ import { FOOTER_NAV, SITE } from "@/lib/site";
 import { CONTACT } from "@/content/contact";
 import type { Locale } from "@/i18n/config";
 import { getUI } from "@/i18n/ui";
-import { Arrow } from "./GhostButton";
 import CurrentYear from "./CurrentYear";
+import WordmarkReveal from "./WordmarkReveal";
+import SocialIcon, { socialKey } from "./SocialIcons";
 
 export default function SiteFooter({ locale }: { locale: Locale }) {
   const ui = getUI(locale);
@@ -31,11 +32,9 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
 
       <div className="container-x relative pt-[clamp(10rem,22vh,16rem)]">
         {/* Main CTA */}
-        <Link href="/contact" className="group block" aria-label={ui.nav.cta}>
-          <span className="eyebrow mb-6 block">{ui.common.greatThings}</span>
-          <span className="display flex items-end gap-[0.12em] leading-[0.82]" style={{ fontSize: "var(--fs-footer)" }}>
-            <span className="group-hover:gradient-text">{ui.nav.cta}.</span>
-            <Arrow className="mb-[0.08em] !h-[0.42em] !w-[0.42em] shrink-0 opacity-50 transition-all duration-500 group-hover:translate-x-[0.1em] group-hover:opacity-100" />
+        <Link href="/contact" className="group inline-block" aria-label={ui.nav.cta}>
+          <span className="display gradient-fill-hover block leading-[0.82]" style={{ fontSize: "var(--fs-footer)" }}>
+            {ui.nav.cta}.
           </span>
         </Link>
 
@@ -92,36 +91,32 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
 
           <div className="md:col-span-3">
             <p className="t-label mb-4 text-white/40">{ui.common.follow}</p>
-            <ul className="space-y-3">
-              {CONTACT.social.map((s) => (
-                <li key={s.url}>
-                  <a href={s.url} target="_blank" rel="noopener noreferrer" className="link-line t-label text-white/80 hover:text-white">
-                    {s.label}
-                  </a>
-                </li>
-              ))}
+            <ul className="space-y-4">
+              {CONTACT.social
+                .map((s) => ({ ...s, key: socialKey(s.label) }))
+                .filter((s) => s.key)
+                .map((s) => (
+                  <li key={s.url}>
+                    <a href={s.url} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3 text-white/80 hover:text-white">
+                      <SocialIcon name={s.key!} className="transition-transform duration-300 group-hover:scale-110" />
+                      <span className="link-line t-label">{s.label}</span>
+                    </a>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
 
         {/* Signature wordmark */}
         <div className="mt-[clamp(4rem,9vw,8rem)]">
-          <Image
-            src="/brand/consensus-wordmark.svg"
-            alt="Consensus"
-            width={1294}
-            height={372}
-            sizes="100vw"
-            className="h-auto w-full select-none"
-            draggable={false}
-          />
+          <WordmarkReveal />
         </div>
 
         <div className="flex flex-col gap-3 border-t border-white/10 py-7 pr-20 text-xs text-white/40 md:flex-row md:items-center md:justify-between md:pr-28">
           <p>
             © <CurrentYear /> {SITE.name} {ui.common.rights}
           </p>
-          <p className="t-label !text-[0.68rem]">{ui.common.tagline}</p>
+          <p className="font-body text-xs tracking-normal text-white/50">{ui.common.tagline}</p>
         </div>
       </div>
     </footer>

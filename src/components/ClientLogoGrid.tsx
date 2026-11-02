@@ -11,16 +11,16 @@ export default function ClientLogoGrid({ logos, locale }: { logos: ClientLogo[];
   const ui = getUI(locale);
   return (
     <ul
-      className="grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 lg:gap-x-10 lg:gap-y-16"
+      className="grid grid-cols-2 gap-x-8 gap-y-14 sm:grid-cols-3 lg:grid-cols-4 lg:gap-x-14 lg:gap-y-20"
       role="list"
       aria-label={ui.common.selectedClients}
     >
       {logos.map((l, i) => (
         <li
           key={l.name}
-          className="flex h-16 items-center justify-center opacity-85 transition-[opacity,transform] duration-500 hover:scale-[1.04] hover:opacity-100 md:h-20"
+          className="flex h-20 items-center justify-center opacity-85 transition-[opacity,transform] duration-500 hover:scale-[1.04] hover:opacity-100 md:h-24"
           data-reveal
-          style={{ ["--reveal-delay" as string]: `${(i % 6) * 60}ms` }}
+          style={{ ["--reveal-delay" as string]: `${(i % 4) * 70}ms` }}
         >
           {l.src ? (
             <Image
@@ -28,7 +28,9 @@ export default function ClientLogoGrid({ logos, locale }: { logos: ClientLogo[];
               alt={l.name}
               width={l.width ?? 160}
               height={l.height ?? 64}
-              className="h-auto max-h-12 w-auto max-w-[80%] md:max-h-14"
+              className="h-full w-full object-contain"
+              style={{ maxHeight: "100%", maxWidth: "70%" }}
+              unoptimized
             />
           ) : (
             <span

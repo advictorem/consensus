@@ -19,8 +19,8 @@ export const PROJECTS: Project[] = [
     featured: true,
     featuredOrder: 1,
     size: "xl",
-    hero: { src: "/media/hero-poster.jpg", alt: "Downtown Los Angeles architecture in black and white", position: "50% 40%" },
-    thumb: { src: "/images/la/palms-dtla-sunset.jpg", alt: "Palm trees and the downtown Los Angeles skyline at golden hour", position: "50% 45%" },
+    hero: { src: "/images/work/california-lottery.jpg", alt: "California Lottery 'You Play, Schools Win' campaign: five smiling educators and students on a blue calottery background", position: "50% 40%" },
+    thumb: { src: "/images/work/california-lottery.jpg", alt: "California Lottery 'You Play, Schools Win' campaign portraits", position: "50% 40%" },
     intro:
       "Behind every contribution is a story worth telling. We brought the California Lottery's commitment to public education to life through authentic voices, real classrooms, and a statewide campaign designed to connect communities with the impact of their schools.",
     challenge:
@@ -38,19 +38,19 @@ export const PROJECTS: Project[] = [
     outcomesNote:
       "Results as reported in the Consensus 2025 capabilities presentation. Publish only with accurate attribution and California Lottery approval.",
     related: ["hollywood-bowl", "imagine-town-center"],
-    approvals: ["Client approval of published results", "Replace stand-in imagery with authentic campaign stills from the Vimeo showcase", "Confirm campaign dates and scope"],
+    approvals: ["Client approval of published results", "Confirm campaign dates and scope"],
   },
   {
     slug: "goodman-north-america",
     client: "Goodman North America",
-    title: "Strategic Communications\n& Reputation",
+    title: "Positioning a Global\nReal Estate Icon",
     descriptor: "Agency-of-record counsel positioning a global industrial property group with the business press and the communities where it builds.",
     disciplines: ["Strategy", "Public Relations"],
     tags: ["Agency of Record", "Corporate Reputation", "Media Relations", "Positioning"],
     featured: true,
     featuredOrder: 2,
-    hero: { src: "/images/la/sf-skyline-fog.jpg", alt: "City skyline above a layer of morning fog", position: "50% 40%" },
-    thumb: { src: "/images/la/sf-skyline-fog.jpg", alt: "City skyline above a layer of morning fog", position: "50% 45%" },
+    hero: { src: "/images/work/goodman.jpg", alt: "Goodman logistics facility at dusk with illuminated façade and traffic light trails", position: "50% 50%" },
+    thumb: { src: "/images/work/goodman.jpg", alt: "Goodman logistics facility at dusk", position: "50% 50%" },
     intro:
       "As agency of record, Consensus provides Goodman North America with strategic communications counsel—shaping corporate positioning, earning credible coverage in the business and trade press, and supporting relationships in the markets where Goodman develops and operates.",
     challenge:
@@ -59,19 +59,19 @@ export const PROJECTS: Project[] = [
       "Position Goodman on substance: the quality of its assets, its long-term approach, and its role in the logistics infrastructure communities depend on. Prioritize relationships with the business press over volume.",
     execution: "Ongoing media relations, executive positioning, announcement strategy, and corporate communications support.",
     related: ["nestle", "california-lottery"],
-    approvals: ["Case detail and any outcomes to be drawn from the capabilities deck and approved by Goodman", "Replace stand-in imagery with approved project photography"],
+    approvals: ["Case detail and any outcomes to be drawn from the capabilities deck and approved by Goodman"],
   },
   {
     slug: "hollywood-bowl",
     client: "Hollywood Bowl",
-    title: "Community Engagement &\nStrategic Communications",
+    title: "Keeping a Landmark\na Good Neighbor",
     descriptor: "Keeping one of the world's most beloved venues a good neighbor—for the Los Angeles Philharmonic and Live Nation Hewitt Silva.",
     disciplines: ["Community", "Strategy", "Public Relations"],
     tags: ["Community Relations", "Stakeholder Management", "Communications Strategy", "Neighborhood Engagement"],
     featured: true,
     featuredOrder: 3,
-    hero: { src: "/images/la/griffith-observatory.jpg", alt: "Griffith Observatory and the Hollywood Hills above Los Angeles", position: "60% 50%" },
-    thumb: { src: "/images/la/griffith-observatory.jpg", alt: "The Hollywood Hills and Los Angeles basin from Griffith Observatory", position: "65% 50%" },
+    hero: { src: "/images/work/hollywood-bowl.jpg", alt: "Fireworks over the Hollywood Bowl shell with a full audience", position: "50% 55%" },
+    thumb: { src: "/images/work/hollywood-bowl.jpg", alt: "Fireworks over the Hollywood Bowl", position: "50% 55%" },
     intro:
       "The Hollywood Bowl is a civic treasure that lives in a residential neighborhood. Consensus supports the Los Angeles Philharmonic and Live Nation Hewitt Silva with community relationships, neighborhood engagement, and the communications strategy that keeps the venue and its neighbors in conversation.",
     challenge:
@@ -80,19 +80,19 @@ export const PROJECTS: Project[] = [
       "Treat residents, neighborhood councils, and city agencies as ongoing partners rather than audiences—with consistent, transparent communication and real responsiveness.",
     execution: "Stakeholder mapping, neighborhood outreach, community meetings, and strategic communications support across the season.",
     related: ["california-lottery", "pershing-square-renew"],
-    approvals: ["Scope and outcomes to be confirmed against the capabilities deck and approved by the LA Phil / Live Nation Hewitt Silva", "Replace stand-in imagery with approved venue photography"],
+    approvals: ["Scope and outcomes to be confirmed against the capabilities deck and approved by the LA Phil / Live Nation Hewitt Silva"],
   },
   {
     slug: "nestle",
     client: "Nestlé",
-    title: "Crisis Communications &\nStakeholder Engagement",
+    title: "Clear Answers in\na Critical Moment",
     descriptor: "Clear, credible public information and issue management on an environmental matter in the City of Ripon.",
     disciplines: ["Strategy", "Public Relations", "Community"],
     tags: ["Crisis Communications", "Issue Management", "Stakeholder Communications", "Public Information"],
     featured: true,
     featuredOrder: 4,
-    hero: { src: "/images/la/urban-light.jpg", alt: "Rows of lamp posts glowing against the night sky", position: "50% 55%" },
-    thumb: { src: "/images/la/urban-light.jpg", alt: "Rows of lamp posts glowing against the night sky", position: "50% 60%" },
+    hero: { src: "/images/work/nestle.jpg", alt: "Nestlé sign on a glass office building at dusk", position: "50% 40%" },
+    thumb: { src: "/images/work/nestle.jpg", alt: "Nestlé sign on a glass office building", position: "50% 40%" },
     intro:
       "When environmental concerns surface, silence reads as guilt and spin reads as contempt. Consensus supported Nestlé with stakeholder communications, public information, and issue management in the City of Ripon—communicating what was known, what was being done, and what came next.",
     challenge:
@@ -101,7 +101,7 @@ export const PROJECTS: Project[] = [
       "Lead with transparency and consistency: one set of facts, communicated to every stakeholder, coordinated with regulators and legal counsel, and updated as the situation evolved.",
     execution: "Crisis response, message development, public information materials, community communications, and stakeholder engagement.",
     related: ["goodman-north-america", "hollywood-bowl"],
-    approvals: ["Factual sensitivity: case detail must be approved by Nestlé before publication", "Replace stand-in imagery"],
+    approvals: ["Factual sensitivity: case detail must be approved by Nestlé before publication"],
   },
   {
     slug: "imagine-town-center",
@@ -110,14 +110,13 @@ export const PROJECTS: Project[] = [
     descriptor: "Community outreach and a video campaign that invited residents into the design charrette for the Town Center master plan.",
     disciplines: ["Community", "Creative", "Digital"],
     tags: ["Community Outreach", "Video", "Planning", "Public Participation"],
-    hero: { src: "/images/la/venice-coast-aerial.jpg", alt: "Aerial view of a Southern California community", position: "50% 55%" },
-    thumb: { src: "/images/la/venice-coast-aerial.jpg", alt: "Aerial view of a Southern California community", position: "50% 60%" },
+    hero: { src: "/images/work/aliso-viejo.jpg", alt: "Aerial view of Aliso Viejo Town Center and surrounding hills", position: "50% 50%" },
+    thumb: { src: "/images/work/aliso-viejo.jpg", alt: "Aerial view of Aliso Viejo Town Center", position: "50% 55%" },
     intro:
       "Consensus led community outreach and produced a video campaign for the City of Aliso Viejo during the design charrette for its Town Center master plan—giving residents a clear picture of what was possible and a real way to shape it.",
     execution: "Outreach program, campaign video, and a dedicated engagement website (imaginetowncenter.com).",
     vimeo: [{ videoId: "208376908", title: "Imagine Town Center — campaign video" }],
     related: ["innovation-lives-here", "pershing-square-renew"],
-    approvals: ["Replace stand-in imagery with stills from the campaign video"],
   },
   {
     slug: "innovation-lives-here",

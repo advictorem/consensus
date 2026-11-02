@@ -1,51 +1,37 @@
 import type { ClientLogo } from "./types";
 
 /**
- * Client logo grid. Order: priority clients from the brief, then additional
- * verified marks from the current consensusinc.com logo wall.
- *
- * `src` is intentionally unset until an official white SVG/PNG is placed in
- * /public/images/clients (see HANDOFF.md → Client logos). Until then the grid
- * renders a typeset placeholder for that client.
- *
- * ✓ = appears on the current consensusinc.com site (logo wall or industry pages)
- * ○ = listed in the brief / capabilities deck; not on the current site
+ * Client logo grid — 4 columns × 5 rows (20 marks).
+ * Files are the flat-white PNGs served by the current consensusinc.com logo
+ * wall (200px wide). Replace with vector/white SVGs when available; the grid
+ * scales any aspect ratio. Width/height are the source pixel sizes.
  */
+const L = (name: string, file: string, width: number, height: number): ClientLogo => ({
+  name,
+  src: `/images/clients/${file}.png`,
+  width,
+  height,
+});
+
 export const CLIENT_LOGOS: ClientLogo[] = [
-  { name: "Nestlé" }, // ✓ (Nestlé — City of Ripon)
-  { name: "The Home Depot" }, // ✓
-  { name: "Kroger" }, // ✓ (Ralphs Sherman Oaks)
-  { name: "Target" }, // ✓
-  { name: "IKEA" }, // ✓
-  { name: "Goodman" }, // ○
-  { name: "Niagara Bottling" }, // ✓
-  { name: "Westfield" }, // ✓
-  { name: "Limoneira" }, // ✓
-  { name: "Kaiser Permanente" }, // ✓
-  { name: "LA Phil" }, // ○
-  { name: "Live Nation" }, // ○
-  { name: "Nike" }, // ○
-  { name: "Warner Bros." }, // ✓
-  { name: "Hollywood Bowl" }, // ○
-  { name: "California Lottery" }, // ○
-  { name: "LAFC" }, // ○
-  { name: "LAX" }, // ✓ (Los Angeles World Airports)
-  { name: "LA Metro" }, // ✓
-  { name: "Hollywood Burbank Airport" }, // ✓ (RS&H — Burbank Bob Hope Airport)
-  { name: "U.S. Chamber of Commerce" }, // ○
-  { name: "California High-Speed Rail Authority" }, // ✓
-  { name: "Port of Los Angeles" }, // ✓
-  { name: "LA County Public Works" }, // ✓
-  { name: "Honeywell" }, // ✓
-  { name: "Lockheed Martin" }, // ✓
-  { name: "Northrop Grumman" }, // ✓
-  { name: "SoCalGas" }, // ✓
-  { name: "Stemilt" }, // ○
-  { name: "USC" }, // ✓
-  { name: "Amtrak" }, // ✓
-  { name: "BNSF" }, // ✓
-  { name: "WeWork" }, // ✓
-  { name: "Playa Vista" }, // ✓
-  { name: "Metropolitan Water District" }, // ✓
-  { name: "OCTA" }, // ✓
+  L("The Home Depot", "home-depot", 200, 199),
+  L("IKEA", "ikea", 200, 71),
+  L("Target", "target", 200, 254),
+  L("Kaiser Permanente", "kaiser", 200, 69),
+  L("Warner Bros.", "warner-bros", 200, 185),
+  L("Honeywell", "honeywell", 200, 35),
+  L("Northrop Grumman", "northrop", 200, 60),
+  L("SoCalGas", "socalgas", 200, 141),
+  L("Westfield", "westfield", 200, 65),
+  L("Niagara Bottling", "niagara", 200, 88),
+  L("LA Metro", "la-metro", 200, 76),
+  L("California High-Speed Rail Authority", "chsra", 200, 71),
+  L("Port of Los Angeles", "port-la", 200, 217),
+  L("USC", "usc", 200, 43),
+  L("Amtrak", "amtrak", 200, 83),
+  L("BNSF Railway", "bnsf", 200, 32),
+  L("WeWork", "wework", 200, 45),
+  L("Playa Vista", "playa-vista", 200, 100),
+  L("Metropolitan Water District of Southern California", "mwd", 200, 200),
+  L("OCTA", "octa", 200, 243),
 ];

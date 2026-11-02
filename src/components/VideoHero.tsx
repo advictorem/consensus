@@ -9,12 +9,10 @@ export default function VideoHero({
   lines,
   copy,
   primary,
-  secondary,
 }: {
   lines: string[];
   copy: string;
   primary: { label: string; href: string };
-  secondary: { label: string; href: string };
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const ui = useUI();
@@ -65,12 +63,13 @@ export default function VideoHero({
         <source src="/media/hero-1080.mp4" type="video/mp4" media="(min-width: 1024px)" />
         <source src="/media/hero-720.mp4" type="video/mp4" />
       </video>
-      {/* Tonal overlay: dark base with a whisper of brand purple at the edges */}
+      {/* Brand purple overlay (multiply) + grounding gradient for text safety */}
+      <div className="absolute inset-0 -z-10 bg-[#8e3f8c] mix-blend-multiply" />
+      <div className="absolute inset-0 -z-10 bg-[#9e479b]/40 mix-blend-screen" />
       <div
         className="absolute inset-0 -z-10"
         style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.35) 100%), radial-gradient(120% 90% at 85% 10%, rgba(158,71,155,0.28), transparent 60%)",
+          background: "linear-gradient(to top, rgba(20,0,20,0.75) 0%, rgba(20,0,20,0.15) 40%, rgba(0,0,0,0.25) 100%)",
         }}
       />
 
@@ -80,7 +79,7 @@ export default function VideoHero({
           lines={lines}
           className={`display t-hero max-w-[14ch] ${lines.join(" ").length > 24 ? "t-hero--long" : ""}`}
         />
-        <div className="mt-10 flex max-w-5xl flex-col gap-8 md:mt-12 md:flex-row md:items-end md:justify-between">
+        <div className="mt-10 flex max-w-6xl flex-col gap-8 md:mt-12 md:flex-row md:items-end md:justify-between">
           <p
             className="t-lead max-w-[36ch] text-white/85"
             data-reveal
@@ -93,9 +92,8 @@ export default function VideoHero({
             data-reveal
             style={{ ["--reveal-delay" as string]: "700ms" }}
           >
-            <GhostButton href={primary.href}>{primary.label}</GhostButton>
-            <GhostButton href={secondary.href} arrow={false}>
-              {secondary.label}
+            <GhostButton href={primary.href} size="lg">
+              {primary.label}
             </GhostButton>
           </div>
         </div>

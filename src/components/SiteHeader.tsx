@@ -51,27 +51,27 @@ export default function SiteHeader() {
         }`}
       >
         <div className="container-x flex items-center justify-between" style={{ height: "var(--header-h)" }}>
-          <Logo height={52} priority className="relative z-[60]" />
+          <Logo height={78} priority className="relative z-[60]" />
 
-          <nav aria-label={ui.a11y.primaryNav} className="hidden items-center gap-8 lg:flex">
+          <nav aria-label={ui.a11y.primaryNav} className="hidden items-center gap-9 lg:flex">
             {NAV.filter((n) => n.href !== "/").map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={isActive(item.href) ? "page" : undefined}
-                className="link-line t-label text-white/90 transition-colors hover:text-white"
+                className="link-line t-label !text-[1rem] text-white/90 transition-colors hover:text-white"
               >
                 {ui.nav[item.key]}
               </Link>
             ))}
-            <LanguageSwitcher className="ml-1" />
-            <GhostButton href={CTA.href} size="sm" arrow={false} className="ml-1">
+            <LanguageSwitcher className="ml-2" size="md" />
+            <GhostButton href={CTA.href} arrow={false} className="ml-1">
               {ui.nav.cta}
             </GhostButton>
           </nav>
 
           <div className="flex items-center gap-5 lg:hidden">
-            <LanguageSwitcher className="relative z-[60]" />
+            <LanguageSwitcher className="relative z-[60]" size="md" />
             <button
               type="button"
               className="relative z-[60] -mr-2 flex h-12 w-12 items-center justify-center"

@@ -5,10 +5,10 @@ import SectionHeader from "@/components/SectionHeader";
 import FeaturedWorkGrid from "@/components/FeaturedWorkGrid";
 import CapabilityRows from "@/components/CapabilityRow";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
-import JournalCard from "@/components/JournalCard";
+import VennDiagram from "@/components/VennDiagram";
 import GhostButton from "@/components/GhostButton";
 import { CLIENT_LOGOS } from "@/content/clients";
-import { getHome, getCapabilities, getFeaturedProjects, getLatestArticles } from "@/content";
+import { getHome, getCapabilities, getFeaturedProjects } from "@/content";
 import { alternates, isLocale, type Locale } from "@/i18n/config";
 import { getUI } from "@/i18n/ui";
 
@@ -27,7 +27,6 @@ export default async function HomePage({ params }: Params) {
   const HOME = getHome(locale);
   const capabilities = getCapabilities(locale);
   const featured = getFeaturedProjects(locale, 5);
-  const articles = getLatestArticles(locale, 3);
 
   return (
     <>
@@ -54,20 +53,9 @@ export default async function HomePage({ params }: Params) {
         </div>
       </section>
 
-      {/* 03 — Featured work */}
-      <section className="container-x pb-[var(--section)]" aria-labelledby="work">
-        <div className="mb-16 flex flex-col gap-8 md:mb-20 md:flex-row md:items-end md:justify-between">
-          <SectionHeader id="work" eyebrow={HOME.work.eyebrow} lines={HOME.work.lines} />
-          <div className="hidden md:block" data-reveal>
-            <GhostButton href={HOME.work.cta.href} size="sm">
-              {HOME.work.cta.label}
-            </GhostButton>
-          </div>
-        </div>
-        <FeaturedWorkGrid projects={featured} locale={locale} />
-        <div className="mt-16 md:hidden" data-reveal>
-          <GhostButton href={HOME.work.cta.href}>{HOME.work.cta.label}</GhostButton>
-        </div>
+      {/* 03 — Our work */}
+      <section id="work" className="container-x scroll-mt-20 pb-[var(--section)]" aria-label={HOME.work.title}>
+        <FeaturedWorkGrid projects={featured} locale={locale} title={HOME.work.title} cta={HOME.work.cta} />
       </section>
 
       {/* 04 — Capabilities */}
@@ -104,47 +92,22 @@ export default async function HomePage({ params }: Params) {
       {/* 06 — The Consensus difference */}
       <section className="relative isolate overflow-hidden border-t border-white/10" aria-labelledby="difference">
         <div className="absolute inset-0 -z-10">
-          <Image src="/images/la/griffith-observatory.jpg" alt="" fill sizes="100vw" className="object-cover object-[65%_50%] opacity-60 grayscale-[70%]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+          <Image src="/images/la/griffith-observatory.jpg" alt="" fill sizes="100vw" className="object-cover object-[65%_50%] opacity-80 grayscale-[45%]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/85" />
         </div>
         <div className="container-x section-y">
-          <div className="grid gap-14 lg:grid-cols-12">
-            <div className="lg:col-span-7">
+          <div className="grid gap-14 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-6">
               <SectionHeader id="difference" eyebrow={HOME.difference.eyebrow} lines={HOME.difference.lines} copy={HOME.difference.copy} />
               <div className="mt-10" data-reveal>
                 <GhostButton href={HOME.difference.cta.href}>{HOME.difference.cta.label}</GhostButton>
               </div>
             </div>
-            <dl className="grid gap-8 self-end lg:col-span-4 lg:col-start-9">
-              {HOME.difference.points.map((p, i) => (
-                <div key={p.k} className="border-t border-white/15 pt-5" data-reveal style={{ ["--reveal-delay" as string]: `${i * 100}ms` }}>
-                  <dt className="display text-[1.6rem] leading-none">{p.k}</dt>
-                  <dd className="mt-2 text-[0.95rem] text-white/70">{p.v}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="lg:col-span-5 lg:col-start-8">
+              <VennDiagram items={HOME.difference.points} className="mx-auto max-w-[560px]" />
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* 07 — Journal */}
-      <section className="container-x section-y border-t border-white/10" aria-labelledby="journal">
-        <div className="mb-16 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <SectionHeader id="journal" eyebrow={HOME.journal.eyebrow} lines={HOME.journal.lines} />
-          <div className="hidden md:block" data-reveal>
-            <GhostButton href={HOME.journal.cta.href} size="sm">
-              {HOME.journal.cta.label}
-            </GhostButton>
-          </div>
-        </div>
-        <div className="grid gap-12 md:grid-cols-3 md:gap-8">
-          {articles.map((a) => (
-            <JournalCard key={a.slug} article={a} locale={locale} />
-          ))}
-        </div>
-        <div className="mt-14 md:hidden">
-          <GhostButton href={HOME.journal.cta.href}>{HOME.journal.cta.label}</GhostButton>
         </div>
       </section>
     </>

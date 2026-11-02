@@ -15,14 +15,13 @@ export const SITE = {
 export type NavKey = keyof UI["nav"];
 export type NavItem = { key: NavKey; href: string; external?: boolean };
 
+/** Top navigation (Journal and Contact live in the footer only). */
 export const NAV: NavItem[] = [
   { key: "home", href: "/" },
   { key: "about", href: "/about" },
   { key: "whatWeDo", href: "/what-we-do" },
   { key: "work", href: "/work" },
   { key: "sectors", href: "/sectors" },
-  { key: "journal", href: "/journal" },
-  { key: "contact", href: "/contact" },
 ];
 
 export const FOOTER_NAV: NavItem[] = [

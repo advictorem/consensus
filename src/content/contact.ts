@@ -5,13 +5,17 @@ export const CONTACT = {
   email: "info@consensusinc.com",
   phone: "(213) 438-1755",
   phoneHref: "+12134381755",
+  /** Shown in the footer / contact page (verified URLs from consensusinc.com). */
   social: [
     { label: "LinkedIn", url: "https://www.linkedin.com/company/consensus-inc" },
     { label: "Instagram", url: "https://www.instagram.com/consensuslive/" },
-    { label: "X / Twitter", url: "https://twitter.com/ConsensusLive" },
+    { label: "X", url: "https://twitter.com/ConsensusLive" },
+    { label: "Vimeo", url: "https://vimeo.com/consensuslive" },
+  ],
+  /** Additional verified channels, not displayed. */
+  otherSocial: [
     { label: "Facebook", url: "https://www.facebook.com/ConsensusLive" },
     { label: "YouTube", url: "https://www.youtube.com/user/Consensusiii" },
-    { label: "Vimeo", url: "https://vimeo.com/consensuslive" },
     { label: "Medium", url: "https://medium.com/@ConsensusLive" },
   ],
 };

@@ -25,7 +25,7 @@ export const PROJECTS_ES: Record<
       "Resultados según lo reportado en la presentación de capacidades 2025 de Consensus. Publicar únicamente con la atribución correcta y la aprobación de la California Lottery.",
   },
   "goodman-north-america": {
-    title: "Comunicación estratégica\ny reputación",
+    title: "Posicionar a un ícono\ninmobiliario global",
     descriptor: "Asesoría como agencia de registro para posicionar a un grupo inmobiliario industrial global ante la prensa de negocios y las comunidades donde construye.",
     tags: ["Agencia de registro", "Reputación corporativa", "Relaciones con medios", "Posicionamiento"],
     intro:
@@ -37,7 +37,7 @@ export const PROJECTS_ES: Record<
     execution: "Relaciones con medios continuas, posicionamiento ejecutivo, estrategia de anuncios y apoyo en comunicación corporativa.",
   },
   "hollywood-bowl": {
-    title: "Participación comunitaria y\ncomunicación estratégica",
+    title: "Un ícono que sigue siendo\nbuen vecino",
     descriptor: "Mantener a uno de los recintos más queridos del mundo como un buen vecino, para la Los Angeles Philharmonic y Live Nation Hewitt Silva.",
     tags: ["Relaciones comunitarias", "Gestión de grupos de interés", "Estrategia de comunicación", "Participación vecinal"],
     intro:
@@ -49,7 +49,7 @@ export const PROJECTS_ES: Record<
     execution: "Mapeo de grupos de interés, alcance vecinal, reuniones comunitarias y apoyo en comunicación estratégica a lo largo de la temporada.",
   },
   nestle: {
-    title: "Comunicación de crisis y\nparticipación de grupos de interés",
+    title: "Respuestas claras en\nun momento crítico",
     descriptor: "Información pública clara y creíble y gestión de un tema ambiental en la ciudad de Ripon.",
     tags: ["Comunicación de crisis", "Gestión de temas críticos", "Comunicación con grupos de interés", "Información pública"],
     intro:

@@ -30,7 +30,7 @@
   --font-body: var(--font-roboto), system-ui, -apple-system, Helvetica, Arial, sans-serif;
 
   /* Responsive type scale (desktop targets from the brief) */
-  --fs-hero: clamp(4.5rem, 12.5vw, 12.5rem);       /* 72 → 200px */
+  --fs-hero: clamp(5.4rem, 22.5vw, 23rem);       /* ~36% larger than the first pass */       /* 72 → 200px */
   --fs-interior: clamp(3.75rem, 9.5vw, 10rem);     /* 60 → 160px */
   --fs-h2: clamp(2.9rem, 6.6vw, 7.2rem);           /* 46 → 115px */
   --fs-h3: clamp(2rem, 3.6vw, 3.75rem);            /* 32 → 60px */
@@ -42,7 +42,7 @@
 
   --gutter: clamp(1.25rem, 4vw, 4.5rem);
   --section: clamp(6rem, 12vw, 11rem);
-  --header-h: 5.5rem;
+  --header-h: 6.5rem;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -118,7 +118,7 @@ strong, b { font-weight: 700; }
   letter-spacing: 0.1em; /* ≈ Adobe tracking +100 */
 }
 .t-hero     { font-size: var(--fs-hero); }
-.t-hero--long { font-size: clamp(3.6rem, 9.2vw, 9.5rem); }
+.t-hero--long { font-size: clamp(4.4rem, 16vw, 16.5rem); }
 .t-interior { font-size: var(--fs-interior); }
 .t-h2       { font-size: var(--fs-h2); }
 .t-h3       { font-size: var(--fs-h3); line-height: 0.95; }
@@ -157,6 +157,20 @@ strong, b { font-weight: 700; }
 .muted { color: var(--muted); }
 .faint { color: var(--faint); }
 .rule  { border-color: var(--rule); }
+
+.gradient-fill-hover {
+  color: var(--white);
+  background: var(--brand-gradient);
+  background-size: 220% 100%;
+  background-position: 100% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: color 0.45s var(--ease-out), background-position 1.2s var(--ease-in-out);
+}
+.group:hover .gradient-fill-hover, .gradient-fill-hover:hover {
+  color: transparent;
+  background-position: 0% 50%;
+}
 
 .gradient-text {
   background: var(--brand-gradient);
