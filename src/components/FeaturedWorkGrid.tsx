@@ -44,17 +44,18 @@ export default function FeaturedWorkGrid({
 
       <div className="mt-16 grid gap-x-10 gap-y-16 md:mt-24 md:grid-cols-12 md:gap-y-24">
         {rest.map((p, i) => {
-          // "sm" tiles opt out of the 7/5 rhythm and run at roughly half scale.
+          // "sm" tiles opt out of the 7/5 rhythm: a small, indented tile set at
+          // the film's own 16:9 and pulled up into the whitespace beside the
+          // row above. Caption type is unchanged, matching every other tile.
           if (p.size === "sm") {
             return (
               <ProjectCard
                 locale={locale}
                 key={p.slug}
                 project={p}
-                compact
-                aspect="aspect-[4/3]"
-                sizes="(min-width: 768px) 30vw, 100vw"
-                className="md:col-span-4"
+                aspect="aspect-video"
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="md:col-span-5 md:col-start-3 md:-mt-[14vw]"
               />
             );
           }
