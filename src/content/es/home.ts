@@ -28,6 +28,12 @@ export const HOME_ES: typeof HOME = {
   clients: {
     label: "Con quiénes trabajamos",
   },
+  stats: [
+    { value: 30, suffix: "+", label: "Años en el negocio" },
+    { value: 25, label: "Industrias" },
+    { value: 17, label: "Premios de la industria" },
+    { value: 380, label: "Clientes atendidos" },
+  ],
   difference: {
     lines: ["Hechos para", "lo que sigue."],
     copy: "La experiencia nos da perspectiva. La curiosidad nos mantiene en movimiento. Unimos un pensamiento estratégico experimentado con talento creativo diverso, tecnología inteligente y la convicción compartida de que las ideas más fuertes nacen de entender a las personas.",

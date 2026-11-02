@@ -7,6 +7,7 @@ import CapabilityRows from "@/components/CapabilityRow";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import VennDiagram from "@/components/VennDiagram";
 import ScrubText from "@/components/ScrubText";
+import StatsBand from "@/components/StatsBand";
 import GhostButton from "@/components/GhostButton";
 import { CLIENT_LOGOS } from "@/content/clients";
 import { getHome, getCapabilities, getFeaturedProjects } from "@/content";
@@ -77,6 +78,11 @@ export default async function HomePage({ params }: Params) {
           <span className="block">{HOME.clients.label}</span>
         </h2>
         <ClientLogoGrid logos={CLIENT_LOGOS} locale={locale} />
+      </section>
+
+      {/* 05b — Stats */}
+      <section className="container-x pb-[var(--section)]" aria-label="Consensus by the numbers">
+        <StatsBand stats={HOME.stats} />
       </section>
 
       {/* 06 — The Consensus difference */}

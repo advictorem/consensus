@@ -26,6 +26,12 @@ export const HOME = {
   clients: {
     label: "Who we work with", // screen-reader label only
   },
+  stats: [
+    { value: 30, suffix: "+", label: "Years in business" },
+    { value: 25, label: "Industries" },
+    { value: 17, label: "Industry awards" },
+    { value: 380, label: "Clients served" },
+  ],
   difference: {
     lines: ["Built for", "what's next."],
     copy: "Experience gives us perspective. Curiosity keeps us moving. We bring seasoned strategic thinking together with diverse creative talent, intelligent technology, and a shared belief that the strongest ideas start with understanding people.",
